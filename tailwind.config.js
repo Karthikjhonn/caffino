@@ -13,12 +13,13 @@ module.exports = {
         secondary: "#F9F2ED",
         black: "#313131",
         offgray: "#E3E3E3",
+        background:"#F9F9F9"
       },
       fontFamily: {
-        soraLight: ["Sora-Light"],
-        soraMedium: ["Sora-Medium"],
-        soraRegular: ["Sora-Regular"],
-        soraSemibold: ["Sora-SemiBold"],
+        'Sora-Light': ["Sora-Light"],
+        'Sora-Medium': ["Sora-Medium"],
+        'Sora-Regular': ["Sora-Regular"],
+        'Sora-SemiBold': ["Sora-SemiBold"],
       },
     },
   },
