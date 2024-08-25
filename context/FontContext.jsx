@@ -7,10 +7,10 @@ export const FontContext = createContext();
 
 export const FontProvider = ({ children }) => {
   const [loaded] = useFonts({
-    soraLight: require("../assets/fonts/Sora-Light.ttf"),
-    soraMedium: require("../assets/fonts/Sora-Medium.ttf"),
-    soraRegular: require("../assets/fonts/Sora-Regular.ttf"),
-    soraSemibold: require("../assets/fonts/Sora-SemiBold.ttf"),
+    'Sora-Light': require("../assets/fonts/Sora-Light.ttf"),
+    'Sora-Medium': require("../assets/fonts/Sora-Medium.ttf"),
+    'Sora-Regular': require("../assets/fonts/Sora-Regular.ttf"),
+    'Sora-SemiBold': require("../assets/fonts/Sora-SemiBold.ttf"),
   });
   useEffect(() => {
     if (loaded) {
