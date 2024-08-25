@@ -5,13 +5,13 @@ import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
 
 export default function SplashScreen() {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     router.push("/home");
-  //   }, 1000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      router.replace("/home");
+    }, 100);
+  }, []);
   return (
-    <FontProvider>
+    <>
       <View className="flex-1  items-center bg-[#000] bg-g reen-400 pb-16 relative">
         <Image
           // src="https://images.unsplash.com/photo-1549652127-2e5e59e86a7a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D"
@@ -37,6 +37,6 @@ export default function SplashScreen() {
         </View>
       </View>
       <StatusBar style="light" translucent backgroundColor="transparent" />
-    </FontProvider>
+    </>
   );
 }
