@@ -6,7 +6,7 @@ SplashScreen.preventAutoHideAsync();
 export const FontContext = createContext();
 
 export const FontProvider = ({ children }) => {
-  const [loaded] = useFonts({
+  const [loaded,error] = useFonts({
     'Sora-Light': require("../assets/fonts/Sora-Light.ttf"),
     'Sora-Medium': require("../assets/fonts/Sora-Medium.ttf"),
     'Sora-Regular': require("../assets/fonts/Sora-Regular.ttf"),
@@ -15,8 +15,10 @@ export const FontProvider = ({ children }) => {
   useEffect(() => {
     if (loaded) {
       SplashScreen.hideAsync();
+    }else if (error) {
+      console.error("Error loading fonts:", error);
     }
-  }, [loaded]);
+  }, [loaded,error]);
 
   if (!loaded) {
     return null;

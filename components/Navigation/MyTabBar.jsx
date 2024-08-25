@@ -1,16 +1,16 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 
-const tabIcons = {
-  home: require(`../../assets/icons/tabbar/home.png`),
-  wishlist: require(`../../assets/icons/tabbar/wishlist.png`),
-  cart: require(`../../assets/icons/tabbar/cart.png`),
-  notification: require(`../../assets/icons/tabbar/notification.png`),
+const solidIcons = {
+  home: require(`../../assets/icons/tabbar/solid/home.png`),
+  wishlist: require(`../../assets/icons/tabbar/solid/wishlist.png`),
+  cart: require(`../../assets/icons/tabbar/solid/cart.png`),
+  notification: require(`../../assets/icons/tabbar/solid/notification.png`),
 };
-const tabIconsOutline = {
+const outlineIcons = {
   home: require(`../../assets/icons/tabbar/outline/home.png`),
-  wishlist: require(`../../assets/icons/tabbar/wishlist.png`),
-  cart: require(`../../assets/icons/tabbar/cart.png`),
-  notification: require(`../../assets/icons/tabbar/notification.png`),
+  wishlist: require(`../../assets/icons/tabbar/outline/wishlist.png`),
+  cart: require(`../../assets/icons/tabbar/outline/cart.png`),
+  notification: require(`../../assets/icons/tabbar/outline/notification.png`),
 };
 const themColor = "#c67c4e";
 function MyTabBar({ state, descriptors, navigation }) {
@@ -45,7 +45,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             target: route.key,
           });
         };
-        console.log(route);
+        // console.log(route);
 
         if (route.name === "order" || route.name === "details") {
           return null;
@@ -63,7 +63,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             className="h-full flex-1 items-center justify-center"
           >
             <Image
-              source={isFocused ?tabIcons[route.name]:tabIconsOutline[route.name]}
+              source={isFocused ?solidIcons[route.name]:outlineIcons[route.name]}
               tintColor={isFocused ? themColor : "#222"}
               className="object-contain w-6 h-6"
             />
