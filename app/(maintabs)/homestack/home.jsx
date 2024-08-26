@@ -7,17 +7,13 @@ import {
   FlatList,
   Dimensions,
 } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import Button from "../../components/Button";
+import React, { useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import TabItem from "../../components/TabItem";
-import Octicons from "@expo/vector-icons/Octicons";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Card from "../../components/Card";
+import TabItem from "../../../components/TabItem";
+import Card from "../../../components/Card";
 
 const coffee = [
   "all coffee",
@@ -84,6 +80,7 @@ const headerContent = () => {
           </Text>
           <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
         </View>
+        {/* search section  */}
         <View className="flex-row items-center mt-6 space-x-3">
           <View className="px-3 bg-black rounded-xl min-h-[52px] justify-center flex-1">
             <TextInput
@@ -99,9 +96,10 @@ const headerContent = () => {
             <Ionicons name="filter" size={20} color="white" />
           </TouchableOpacity>
         </View>
+        {/* banner  */}
         <View className="mt-6 relative">
           <Image
-            source={require("../../assets/images/Banner 1.png")}
+            source={require("../../../assets/images/Banner 1.png")}
             className="object-contain w-full h-36  rounded-2xl"
           />
           <View className="absolute top-10 left-5 z-10">
