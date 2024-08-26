@@ -7,7 +7,7 @@ const screenWidth = Dimensions.get("window").width;
 
 export default function Card({ item, id }) {
   function detailScreen() {
-    router.push('/details')
+    router.push('/homestack/details')
   }
   return (
     <TouchableOpacity

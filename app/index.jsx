@@ -7,7 +7,7 @@ import { router } from "expo-router";
 export default function SplashScreen() {
   useEffect(() => {
     setTimeout(() => {
-      router.replace("/home");
+      router.replace("/homestack/home");
     }, 100);
   }, []);
   return (
