@@ -6,14 +6,17 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  ActivityIndicator,
 } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import TabItem from "../../../components/TabItem";
 import Card from "../../../components/Card";
+import axios from "axios";
+import getDetails from "../../../hooks/GetDetails";
 
 const coffee = [
   "all coffee",
@@ -26,12 +29,30 @@ const coffee = [
 const screenWidth = Dimensions.get("window").width;
 
 export default function Home() {
+  const { data, loading, error } = getDetails(
+    "https://fake-coffee-api.vercel.app/api"
+  );
+  if (loading) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#c67c4e" />
+      </View>
+    );
+  }
+  if (error) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
   return (
     <>
       <FlatList
         ListHeaderComponent={headerContent}
-        data={coffee}
-        renderItem={({ item }) => <Card item={item} />}
+        data={data}
+        renderItem={(data) => <Card data={data} />}
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         columnWrapperStyle={{

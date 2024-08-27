@@ -24,7 +24,7 @@ function MyTabBar({ state, descriptors, navigation }) {
     currentRouteName = nestedRoute.name;
   }
 
-  console.log("currentRouteName", currentRouteName);
+  // console.log("currentRouteName", currentRouteName);
 
   if (hideTabBarRoutes.includes(currentRouteName)) {
     return null;
@@ -33,7 +33,7 @@ function MyTabBar({ state, descriptors, navigation }) {
   return (
     <View className="bg-white flex-row min-h-[74px]  items-center justify-center absolute bottom-0 z-50 left-0">
       {state.routes.map((route, index) => {
-        console.log(route);
+        // console.log(route);
 
         const { options } = descriptors[route.key];
         const label =

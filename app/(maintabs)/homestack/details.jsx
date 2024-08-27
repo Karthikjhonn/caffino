@@ -1,10 +1,22 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import Button from "../../../components/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import { router } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import Loader from "../../../components/Loader";
+import getDetails from "../../../hooks/GetDetails";
+import { StatusBar } from "expo-status-bar";
 export default function Details() {
+  const { id } = useLocalSearchParams();
+  console.log(id);
+
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -26,13 +38,32 @@ export default function Details() {
       setLoader(false);
     }, 2000);
   };
+  const { data, loading, error } = getDetails(
+    `https://fake-coffee-api.vercel.app/api/${id}`
+  );
+  if (loading) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#c67c4e" />
+      </View>
+    );
+  }
+  if (error) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+
   return (
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} className="">
         {/* banner  */}
-        <View className="bg-gray-300 rounded-2xl h-52 m-6">
+        <View className="bg-gray-300  rounded-2xl h-52 m-6">
           <Image
-            src="https://images.unsplash.com/photo-1723962845257-d3bad7825001?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            // src="https://images.unsplash.com/photo-1723962845257-d3bad7825001?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src={data[0]?.image_url}
             className="w-full h-full object-cover rounded-2xl"
           />
         </View>
@@ -44,7 +75,7 @@ export default function Details() {
                 className="capitalize text-xl font-Sora-SemiBold text-black tracking-wide mb-2 pe-0"
                 numberOfLines={2}
               >
-                Caffe Mocha jhqiug quigq uida ug
+                {data[0]?.name}
               </Text>
               <Text className="capitalize text-xs font-Sora-Regular tracking-wider text-gray-400">
                 Ice/Hot
@@ -96,8 +127,7 @@ export default function Details() {
             numberOfLines={isExpanded ? undefined : 2}
             onTextLayout={handleTextLayout}
           >
-            A cappuccino is an approximately 150 ml (5 oz) Lorem ipsum, dolor
-            sit amet consectetur adipisicing elit. Officiis, dignissimos.
+            {data[0]?.description}
           </Text>
           {showMore ? (
             <TouchableOpacity
@@ -169,6 +199,7 @@ export default function Details() {
           />
         </View>
       </View>
+      <StatusBar style="dark" />
     </View>
   );
 }
