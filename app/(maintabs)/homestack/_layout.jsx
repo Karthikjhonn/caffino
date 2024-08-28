@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Stack } from "expo-router";
 import CustomHeader from "../../../components/Navigation/CustomHeader";
 import { Ionicons } from "@expo/vector-icons";
@@ -16,7 +16,7 @@ export default function HomeStack() {
               navigation={navigation}
               options={options}
               title="details"
-              headerLeft={
+              headerRight={
                 <TouchableOpacity onPress={() => {}}>
                   <Ionicons name="heart-outline" size={24} color="black" />
                 </TouchableOpacity>

@@ -1,15 +1,46 @@
-import { View, Text, ScrollView, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import React, { useState } from "react";
 import Button from "../../../components/Button";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import AddToCartCard from "../../../components/AddToCartCard";
 import Discount from "../../../components/Discount";
+import { useLocalSearchParams } from "expo-router";
+import getDetails from "../../../hooks/GetDetails";
+import DeliveryAddress from "../../../components/DeliveryAddress";
 export default function Order() {
+  const { id } = useLocalSearchParams();
   const [orderType, setOrderType] = useState(1);
-
+  const [total, setTotal] = useState(0);
+  const { data, loading, error } = getDetails(
+    `https://fake-coffee-api.vercel.app/api/${id}`
+  );
+  if (loading) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#c67c4e" />
+      </View>
+    );
+  }
+  if (error) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text>Error: {error.message}</Text>
+      </View>
+    );
+  }
+  function calculateTotal(price, count) {
+    // console.log("price", price);
+    // console.log("count", count);
+    const total = price * count;
+    setTotal(total);
+  }
   return (
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} className="">
@@ -49,45 +80,15 @@ export default function Order() {
         </View>
         {/* delivery address  */}
         <View className="px-6 mt-6">
-          <Text className="text-base font-Sora-SemiBold text-black ">
-            Delivery Address
-          </Text>
-          <Text className="text-sm font-Sora-SemiBold text-black mt-4  capitalize">
-            Karthick vinayagam
-          </Text>
-          <Text className="text-xs font-Sora-Regular text-gray-400 tracking-wider mt-1 capitalize">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ex
-            dignissimos nostrum.
-          </Text>
-          <View className="mt-4 flex-row space-x-2 ">
-            <View className="bg-white border border-gray-400 rounded-full inline-flex px-3 py-1.5 flex-row space-x-1">
-              <FontAwesome name="edit" size={16} color="black" />
-              <Text className="text-black font-Sora-Regular text-xs capitalize tracking-wider">
-                Edit Address
-              </Text>
-            </View>
-            <View className="bg-white border border-gray-400 rounded-full inline-flex px-3 py-1.5 flex-row space-x-1">
-              <MaterialCommunityIcons
-                name="note-text-outline"
-                size={16}
-                color="black"
-              />
-              <Text className="text-black font-Sora-Regular text-xs capitalize tracking-wider">
-                add notes
-              </Text>
-            </View>
-          </View>
-          <View className="w-[92%] mx-auto my-4 h-px bg-offgray "></View>
+          <DeliveryAddress />
         </View>
         {/* add to cart card  */}
         <View className="px-6">
-          <AddToCartCard />
-          <AddToCartCard />
-          <AddToCartCard />
+          <AddToCartCard data={data} calculateTotal={calculateTotal} />
         </View>
         <View className="w-full h-1 bg-secondary my-4"></View>
         {/* discount and payment summary  */}
-        <View className="px-6 my-6 mb-20">
+        <View className="px-6 my-6 mb-10">
           <Discount />
           <View className="mt-6">
             <Text className="font-Sora-SemiBold text-base text-black mb-4">
@@ -99,7 +100,7 @@ export default function Order() {
                   Price
                 </Text>
                 <Text className="font-Sora-SemiBold text-sm text-black text-right">
-                  $ 4.5
+                  $ {total}
                 </Text>
               </View>
               <View className="flex-row  justify-between items-center">
@@ -111,7 +112,7 @@ export default function Order() {
                     ($1.5)
                   </Text>
                   <Text className="font-Sora-SemiBold text-sm text-black text-right">
-                    $ 4.5
+                    $ {data[0]?.price - 8.5}
                   </Text>
                 </View>
               </View>
@@ -131,7 +132,7 @@ export default function Order() {
                 Cash/wallet
               </Text>
               <Text className="text-xs font-Sora-SemiBold text-accent mt-1">
-                $ 452
+                $ 6.56
               </Text>
             </View>
           </View>

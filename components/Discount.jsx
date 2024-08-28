@@ -11,7 +11,6 @@ import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Feather from "@expo/vector-icons/Feather";
 import Button from "./Button";
 export default function Discount() {
-  const [showAppOptions, setShowAppOptions] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleModel = () => {
