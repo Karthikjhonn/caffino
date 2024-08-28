@@ -6,10 +6,10 @@ export default function LayoutTabs() {
   return (
     <Tabs
       tabBar={(props) => <MyTabBar {...props} />}
-      screenOptions={{ headerShown: false }}
+      // screenOptions={{ headerShown: false }}
     >
-      <Tabs.Screen name="homestack" />
-      <Tabs.Screen name="wishlist" />
+      <Tabs.Screen name="homestack" options={{headerShown:false}} />
+      <Tabs.Screen name="wishlist" options={{headerTitle:'Favorites'}} />
       <Tabs.Screen name="cart" />
       <Tabs.Screen name="notification" />
     </Tabs>

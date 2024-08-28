@@ -15,12 +15,12 @@ import getDetails from "../../../hooks/GetDetails";
 import { StatusBar } from "expo-status-bar";
 export default function Details() {
   const { id } = useLocalSearchParams();
-  console.log(id);
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [loader, setLoader] = useState(false);
   const [size, setSize] = useState("M");
+  
 
   const handleTextLayout = (e) => {
     if (e.nativeEvent.lines.length > 2) {
@@ -31,13 +31,7 @@ export default function Details() {
   const toggleText = () => {
     setIsExpanded(!isExpanded);
   };
-  const handleOrder = () => {
-    setLoader(true);
-    setTimeout(() => {
-      router.push("homestack/order");
-      setLoader(false);
-    }, 2000);
-  };
+
   const { data, loading, error } = getDetails(
     `https://fake-coffee-api.vercel.app/api/${id}`
   );
@@ -55,7 +49,18 @@ export default function Details() {
       </View>
     );
   }
-
+  const handleOrder = () => {
+    setLoader(true);
+    setTimeout(() => {
+      router.push({
+        pathname: "homestack/order",
+        params: {
+          id: data[0]?.id,
+        },
+      });
+      setLoader(false);
+    }, 200);
+  };
   return (
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} className="">
@@ -69,53 +74,56 @@ export default function Details() {
         </View>
         {/* product name & details  */}
         <View className="px-6">
-          <View className="flex-row">
+          <View className="flex-row space-x-2 ">
             <View className="shrink grow">
               <Text
-                className="capitalize text-xl font-Sora-SemiBold text-black tracking-wide mb-2 pe-0"
+                className="capitalize text-xl font-Sora-SemiBold text-black tracking-wide mb-1 pe-0"
                 numberOfLines={2}
               >
                 {data[0]?.name}
               </Text>
-              <Text className="capitalize text-xs font-Sora-Regular tracking-wider text-gray-400">
-                Ice/Hot
-              </Text>
+              <View className="flex-row items-center space-x-2">
+                <Text className="capitalize text-xs font-Sora-Regular tracking-wider text-gray-400 border-r border-gray-200" style={{paddingEnd:8}}>
+                  {data[0]?.flavor_profile[0]}
+                </Text>
+                <Text className=" text-xs font-Sora-Regular tracking-wider text-gray-400">
+                  {data[0]?.weight}g
+                </Text>
+              </View>
             </View>
-            <View className="grow">
-              <View className="ms-auto space-x-2 flex-row flex-1 items-start ">
-                <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
-                  <Image
-                    source={require("../../../assets/icons/details/bike.png")}
-                    className="object-contain w-5 h-5"
-                  />
-                </View>
-                <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
-                  <Image
-                    source={require("../../../assets/icons/details/bean.png")}
-                    className="object-contain w-5 h-5"
-                  />
-                </View>
-                <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
-                  <Image
-                    source={require("../../../assets/icons/details/pack.png")}
-                    className="object-contain w-5 h-5"
-                  />
-                </View>
+            <View className="mt-0">
+              <View className="flex-row min-w-min items-center">
+                <AntDesign name="star" size={20} color="#FBBE21" />
+                <Text className="font-Sora-SemiBold text-base text-black mx-1">
+                  4.8
+                </Text>
+                <Text className="font-Sora-Regular text-xs text-gray-400">
+                  (458)
+                </Text>
               </View>
             </View>
           </View>
-          <View className="mt-2">
-            <View className="flex-row min-w-min items-center">
-              <AntDesign name="star" size={20} color="#FBBE21" />
-              <Text className="font-Sora-SemiBold text-base text-black mx-1">
-                4.8
-              </Text>
-              <Text className="font-Sora-Regular text-xs text-gray-400">
-                (458)
-              </Text>
+          <View className="mt-3.5 flex-row space-x-2 items-start">
+            <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
+              <Image
+                source={require("../../../assets/icons/details/bike.png")}
+                className="object-contain w-5 h-5"
+              />
+            </View>
+            <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
+              <Image
+                source={require("../../../assets/icons/details/bean.png")}
+                className="object-contain w-5 h-5"
+              />
+            </View>
+            <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
+              <Image
+                source={require("../../../assets/icons/details/pack.png")}
+                className="object-contain w-5 h-5"
+              />
             </View>
           </View>
-          <View className="w-[92%] mx-auto my-4 h-px bg-offgray "></View>
+          <View className="w-[92%] mx-auto my-4 h-px bg-offgray"></View>
         </View>
         {/* Description */}
         <View className="px-6">
@@ -189,7 +197,9 @@ export default function Details() {
           <Text className="text-sm font-Sora-Regular text-gray-400 capitalize tracking-wider">
             price
           </Text>
-          <Text className="text-xl font-Sora-SemiBold text-accent">$ 452</Text>
+          <Text className="text-xl font-Sora-SemiBold text-accent">
+            $ {data[0]?.price}
+          </Text>
         </View>
         <View className="grow">
           <Button

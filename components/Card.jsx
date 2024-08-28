@@ -29,7 +29,7 @@ export default function Card({ data, id }) {
           src={data?.item?.image_url}
           className="w-full h-full rounded-[14px] object-cover"
         />
-        <View className="bg-black/[30%] p-2 px-3.5 absolute top-0 right-0 rounded-bl-3xl  h-7">
+        <View className="bg-black/[30%] p-2 px-3 absolute top-0 right-0 rounded-bl-3xl  h-7">
           <View className="flex-row space-x-1 items-center">
             <AntDesign name="star" size={12} color="#FBBE21" />
             <Text className="font-Sora-SemiBold text-[8px] text-white ">
