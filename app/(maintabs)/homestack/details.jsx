@@ -15,7 +15,6 @@ import getDetails from "../../../hooks/GetDetails";
 import { StatusBar } from "expo-status-bar";
 export default function Details() {
   const { id } = useLocalSearchParams();
-
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -62,7 +61,7 @@ export default function Details() {
     }, 200);
   };
   return (
-    <View className="flex-1 bg-background">
+    <View className="flex-1 bg-background ">
       <ScrollView showsVerticalScrollIndicator={false} className="">
         {/* banner  */}
         <View className="bg-gray-300  rounded-2xl h-52 m-6">
@@ -192,7 +191,7 @@ export default function Details() {
         </View>
       </ScrollView>
       {/* bottom sticky */}
-      <View className="bg-white px-6 min-h-[118px] flex-row items-center space-x-10">
+      <View className="bg-white px-6 min-h-[118px] flex-row items-center mt-auto space-x-10">
         <View>
           <Text className="text-sm font-Sora-Regular text-gray-400 capitalize tracking-wider">
             price
