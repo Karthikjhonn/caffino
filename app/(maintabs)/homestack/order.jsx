@@ -14,6 +14,7 @@ import Discount from "../../../components/Discount";
 import { useLocalSearchParams } from "expo-router";
 import getDetails from "../../../hooks/GetDetails";
 import DeliveryAddress from "../../../components/DeliveryAddress";
+import testData from '../../../data.json'
 export default function Order() {
   const { id } = useLocalSearchParams();
   const [orderType, setOrderType] = useState(1);
@@ -35,12 +36,15 @@ export default function Order() {
       </View>
     );
   }
-  function calculateTotal(price, count) {
-    // console.log("price", price);
-    // console.log("count", count);
-    const total = price * count;
-    setTotal(total);
+  function calculateTotal(price, count, type = "add") {
+    const total = price;
+    if (type === "add") {
+      setTotal((prevTotal) => prevTotal + total);
+    } else if (type === "minus") {
+      setTotal((prevTotal) => prevTotal - total);
+    }
   }
+
   return (
     <View className="flex-1 bg-background">
       <ScrollView showsVerticalScrollIndicator={false} className="">
@@ -84,7 +88,13 @@ export default function Order() {
         </View>
         {/* add to cart card  */}
         <View className="px-6">
-          <AddToCartCard data={data} calculateTotal={calculateTotal} />
+          {data?.map((data) => (
+            <AddToCartCard
+              data={data}
+              calculateTotal={calculateTotal}
+              key={data?.id}
+            />
+          ))}
         </View>
         <View className="w-full h-1 bg-secondary my-4"></View>
         {/* discount and payment summary  */}
@@ -100,7 +110,7 @@ export default function Order() {
                   Price
                 </Text>
                 <Text className="font-Sora-SemiBold text-sm text-black text-right">
-                  $ {total}
+                  $ {total.toFixed(2)}
                 </Text>
               </View>
               <View className="flex-row  justify-between items-center">
@@ -112,7 +122,7 @@ export default function Order() {
                     ($1.5)
                   </Text>
                   <Text className="font-Sora-SemiBold text-sm text-black text-right">
-                    $ {data[0]?.price - 8.5}
+                    $ {(data[0]?.price - 8).toFixed(2)}
                   </Text>
                 </View>
               </View>

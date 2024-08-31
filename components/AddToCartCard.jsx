@@ -3,24 +3,32 @@ import React, { useEffect, useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
 
 export default function AddToCartCard({ data, calculateTotal }) {
-  const [cartValue, setCartValue] = useState(1);
-  const addCartValue = () => {
-    if (cartValue < 10) {
-      setCartValue((prevValue) => prevValue + 1);
+  const [cartValue, setCartValue] = useState({
+    count: 1,
+    type: "add",
+  });
+  const minusCartValue = () => {
+    if (cartValue.count > 1) {
+      setCartValue((prevValue) => ({
+        count: prevValue.count - 1,
+        type: "minus",
+      }));
     }
   };
-
-  const minusCartValue = () => {
-    if (cartValue > 1) {
-      setCartValue((prevValue) => prevValue - 1);
+  const addCartValue = () => {
+    if (cartValue.count < 10) {
+      setCartValue((prevValue) => ({
+        count: prevValue.count + 1,
+        type: "add",
+      }));
     }
   };
   const formatCartValue = (value) => {
     return value.toString().padStart(2, "0");
   };
 
-  useEffect(() => {
-    calculateTotal(data[0].price, cartValue);
+  useEffect(() => {    
+    calculateTotal(data?.price, cartValue.count, (type = cartValue.type));
   }, [cartValue]);
 
   return (
@@ -29,7 +37,7 @@ export default function AddToCartCard({ data, calculateTotal }) {
         <View className="w-14 h-14 rounded-lg bg-gray-200">
           <Image
             // src="https://images.unsplash.com/photo-1723962845257-d3bad7825001?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            src={data[0]?.image_url}
+            src={data?.image_url}
             className="w-full h-full rounded-lg"
           />
         </View>
@@ -38,13 +46,13 @@ export default function AddToCartCard({ data, calculateTotal }) {
             className="text-black font-Sora-SemiBold text-base tracking-wide"
             numberOfLines={1}
           >
-            {data[0]?.name}
+            {data?.name}
           </Text>
           <Text
             className="text-gray-400 font-Sora-Regular text-xs tracking-wide mt-px"
             numberOfLines={2}
           >
-            {data[0]?.description}
+            {data?.description}
           </Text>
         </View>
       </View>
@@ -58,7 +66,7 @@ export default function AddToCartCard({ data, calculateTotal }) {
             <Feather name="minus" size={20} color="black" />
           </TouchableOpacity>
           <Text className="font-Sora-SemiBold text-sm min-w-[18px]">
-            {formatCartValue(cartValue)}
+            {formatCartValue(cartValue.count)}
           </Text>
           <TouchableOpacity
             onPress={addCartValue}

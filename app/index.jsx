@@ -8,6 +8,7 @@ export default function SplashScreen() {
   useEffect(() => {
     setTimeout(() => {
       router.replace("/homestack/home");
+      // router.replace("/cart");
     }, 100);
   }, []);
   return (

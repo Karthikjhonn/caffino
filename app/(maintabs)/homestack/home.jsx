@@ -65,7 +65,7 @@ export default function Home() {
         ItemSeparatorComponent={() => <View className="h-4"></View>}
         showsVerticalScrollIndicator={false}
       />
-      <StatusBar style="light" />
+      <StatusBar style="light" backgroundColor="#31313140" />
     </>
   );
 }
