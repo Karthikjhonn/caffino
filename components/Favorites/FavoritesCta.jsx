@@ -10,7 +10,8 @@ import React, { useEffect, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Loader from "../Loader";
 import { router } from "expo-router";
-export default function FavoritesCta({ data }) {
+
+export default function FavoritesCta({ data, removeWishlist, productData }) {
   const [step, setStep] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -31,6 +32,14 @@ export default function FavoritesCta({ data }) {
   };
   const handleModel = () => {
     setModalVisible(!modalVisible);
+  };
+  const toRemoveWishlist = () => {
+    const payload = {
+      ...productData,
+      wishlist: false,
+    };
+    handleModel();
+    removeWishlist(payload);
   };
   return (
     <View className="flex-row items-center justify-between space-x-2">
@@ -88,11 +97,15 @@ export default function FavoritesCta({ data }) {
                 </Text>
               </View>
             </View>
-            <View className="px-6 py-4 bg-red-100/50 min-h-[44px]">
-              <Text className="font-Sora-Medium text-base text-center text-red-400/50">
+            <Pressable
+              onPress={toRemoveWishlist}
+              android_ripple={{ color: "#fecaca" }}
+              className="px-6 py-4 bg-red-100/50 min-h-[44px]"
+            >
+              <Text className="font-Sora-Medium text-base text-center text-red-400/50 text-red-00">
                 Remove
               </Text>
-            </View>
+            </Pressable>
           </Pressable>
         </Pressable>
       </Modal>

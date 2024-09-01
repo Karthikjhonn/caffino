@@ -130,7 +130,7 @@ const headerContent = () => {
             <View className="bg-black w-full h-6 absolute top-3 -z-10"></View>
             <View className="bg-black w-36 h-6 absolute top-12 -z-10"></View>
           </View>
-          <Text className="bg-[#ED5151] px-2 py-1 rounded-md text-white font-Sora-SemiBold text-sm absolute top-2 left-5">
+          <Text className="bg-errorColor px-2 py-1 rounded-md text-white font-Sora-SemiBold text-sm absolute top-2 left-5">
             {" "}
             Promo
           </Text>

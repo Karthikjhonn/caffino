@@ -4,34 +4,18 @@ import FavoritesCta from "./FavoritesCta";
 import Entypo from "@expo/vector-icons/Entypo";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { router } from "expo-router";
-const data = {
-  _id: "6424338959f9f6fdd657d2e3",
-  id: 3,
-  name: "Rainforest Rhapsody",
-  description:
-    "An earthy and complex coffee with notes of toasted nuts and caramel. Sustainably grown in the rainforests of South America.",
-  price: 14.99,
-  region: "South America",
-  weight: 500,
-  flavor_profile: ["Citrus"],
-  grind_option: ["Whole Bean", "Cafetiere", "Filter", "Espresso"],
-  roast_level: 2,
-  image_url: "https://iili.io/H8Y7kTN.webp",
-};
-const toDetails = () => {
-  router.push({
-    pathname: "homestack/details",
-    params: {
-      id: data?.id,
-    },
-  });
-};
 
-export default function FavoritesCard() {
+export default function FavoritesCard({ data ,removeWishlist,productData}) {
+  const toDetails = () => {
+    router.push({
+      pathname: "homestack/details",
+      params: {
+        id: data?.id,
+      },
+    });
+  };
   return (
-    <Pressable
-      className="bg-white rounded-[18px] p-1 flex-row"
-    >
+    <Pressable className="bg-white rounded-[18px] p-1 flex-row mb-4">
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={toDetails}
@@ -91,7 +75,7 @@ export default function FavoritesCard() {
         </Text>
         {/* Add to cart and remove wishlist button  */}
         <View className="mt-auto">
-          <FavoritesCta data={data} />
+          <FavoritesCta data={data} removeWishlist={removeWishlist} productData={productData}/>
         </View>
       </View>
     </Pressable>
