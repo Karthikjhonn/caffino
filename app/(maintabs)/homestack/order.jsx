@@ -11,10 +11,11 @@ import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AddToCartCard from "../../../components/AddToCartCard";
 import Discount from "../../../components/Discount";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 import getDetails from "../../../hooks/GetDetails";
 import DeliveryAddress from "../../../components/DeliveryAddress";
-import testData from '../../../data.json'
+import testData from "../../../data.json";
+import CustomHeader from "../../../components/Navigation/CustomHeader";
 export default function Order() {
   const { id } = useLocalSearchParams();
   const [orderType, setOrderType] = useState(1);
@@ -47,6 +48,7 @@ export default function Order() {
 
   return (
     <View className="flex-1 bg-background">
+      <CustomHeader title={"Order"} navigation={router.back} />
       <ScrollView showsVerticalScrollIndicator={false} className="">
         <View className="px-6 mt-6">
           <View className="bg-gray-200 p-1 flex-row space-x-1 rounded-lg min-h-[44px]">

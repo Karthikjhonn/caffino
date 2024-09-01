@@ -13,7 +13,8 @@ module.exports = {
         secondary: "#F9F2ED",
         black: "#313131",
         offgray: "#E3E3E3",
-        background:"#F9F9F9"
+        background:"#F9F9F9",
+        errorColor:"#ED5151"
       },
       fontFamily: {
         'Sora-Light': ["Sora-Light"],
