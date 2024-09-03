@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../../components/Button";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -14,12 +14,51 @@ import Discount from "../../../components/Discount";
 import { router, useLocalSearchParams } from "expo-router";
 import getDetails from "../../../hooks/GetDetails";
 import DeliveryAddress from "../../../components/DeliveryAddress";
-import testData from "../../../data.json";
+import productData from "../../../data.json";
 import CustomHeader from "../../../components/Navigation/CustomHeader";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+const getProductDetails = async () => {
+  try {
+    const productDetails = await AsyncStorage.getItem("productDetails");
+    // console.log(productDetails);
+    return productDetails ? JSON.parse(productDetails) : [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 export default function Order() {
-  const { id } = useLocalSearchParams();
+  const { id, wishlistItem } = useLocalSearchParams();
+  console.log(wishlistItem);
+  
   const [orderType, setOrderType] = useState(1);
   const [total, setTotal] = useState(0);
+  const [cartData, setCartData] = useState([]);
+  const [cartProductData, setCartProductData] = useState([]);
+  const getWishlistDetails = async () => {
+    const res = await getProductDetails();
+    const filterCartItems = res.filter((data) => {
+      if (data.cart == true) {
+        return data;
+      }
+    });
+    const filteredProducts = [];
+    productData.filter((product) => {
+      filterCartItems.some((data) => {
+        if (data.id == product.id) {
+          filteredProducts.push(product);
+        }
+      });
+    });
+    // console.log("final", filteredProducts);
+
+    // console.log(filterCartItems);
+    setCartData(filterCartItems);
+    setCartProductData(filteredProducts);
+  };
+  useEffect(() => {
+    getWishlistDetails();
+  }, []);
   const { data, loading, error } = getDetails(
     `https://fake-coffee-api.vercel.app/api/${id}`
   );
@@ -89,15 +128,30 @@ export default function Order() {
           <DeliveryAddress />
         </View>
         {/* add to cart card  */}
-        <View className="px-6">
-          {data?.map((data) => (
-            <AddToCartCard
-              data={data}
-              calculateTotal={calculateTotal}
-              key={data?.id}
-            />
-          ))}
-        </View>
+        {wishlistItem ? (
+          <View className="px-6">
+            {cartProductData?.map((data, i) => (
+              <AddToCartCard
+                data={data}
+                calculateTotal={calculateTotal}
+                key={data?.id}
+                count={cartData}
+              />
+            ))}
+          </View>
+        ) : (
+          <View className="px-6">
+            {data?.map((data, i) => (
+              <AddToCartCard
+                data={data}
+                calculateTotal={calculateTotal}
+                key={data?.id}
+                count={cartData[i]}
+              />
+            ))}
+          </View>
+        )}
+
         <View className="w-full h-1 bg-secondary my-4"></View>
         {/* discount and payment summary  */}
         <View className="px-6 my-6 mb-10">

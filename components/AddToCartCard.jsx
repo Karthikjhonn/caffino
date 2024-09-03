@@ -2,7 +2,8 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
 
-export default function AddToCartCard({ data, calculateTotal }) {
+export default function AddToCartCard({ data, calculateTotal}) {
+  
   const [cartValue, setCartValue] = useState({
     count: 1,
     type: "add",
@@ -32,7 +33,7 @@ export default function AddToCartCard({ data, calculateTotal }) {
   }, [cartValue]);
 
   return (
-    <View className="flex-row items-center justify-between mb-3">
+    <View className="flex-row items-center justify-between mb-5">
       <View className="flex-row items-start space-x-2 shrink">
         <View className="w-14 h-14 rounded-lg bg-gray-200">
           <Image

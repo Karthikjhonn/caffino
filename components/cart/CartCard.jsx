@@ -3,7 +3,7 @@ import React from "react";
 import Entypo from "@expo/vector-icons/Entypo";
 import CartCta from "./CartCta";
 
-export default function CartCard({data ,calculateTotal}) {
+export default function CartCard({data ,calculateTotal,count}) {
     
   return (
     <View className="border-b border-gray-300 flex-row bg-sky-4 00 shrink" key={data?.id}>
@@ -65,7 +65,7 @@ export default function CartCard({data ,calculateTotal}) {
             $ 3.52
           </Text>
         </View>
-        <CartCta data={data} calculateTotal={calculateTotal}/>
+        <CartCta data={data} calculateTotal={calculateTotal} countDetails={count}/>
       </View>
     </View>
   );

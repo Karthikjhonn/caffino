@@ -16,6 +16,9 @@ export default function FavoritesCta({ data, removeWishlist, productData }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [loader, setLoader] = useState(false);
   const handleSteps = () => {
+    if (step === 1) {
+      addToCart();
+    }
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
@@ -39,7 +42,14 @@ export default function FavoritesCta({ data, removeWishlist, productData }) {
       wishlist: false,
     };
     handleModel();
-    removeWishlist(payload);
+    removeWishlist(payload,'wishlist');
+  };
+  const addToCart = () => {
+    const payload = {
+      ...productData,
+      cart: true,
+    };
+    removeWishlist(payload,'cart');
   };
   return (
     <View className="flex-row items-center justify-between space-x-2">
