@@ -1,7 +1,35 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import Feather from "@expo/vector-icons/Feather";
-export default function CartCta({ data, calculateTotal }) {
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const updateWishlistStatus = async (product, type) => {
+  console.log("product value", product);
+  console.log("product type", type);
+  if (product == null || undefined) {
+    return null;
+  }
+  try {
+    const productDetails = await AsyncStorage.getItem("productDetails");
+    let productArray = productDetails ? JSON.parse(productDetails) : [];
+    const productIndex = productArray.findIndex(
+      (item) => item.id === product.id
+    );
+    if (productIndex !== -1) {
+      productArray[productIndex][type] = product[type];
+    } else {
+      productArray.push(product);
+    }
+    await AsyncStorage.setItem("productDetails", JSON.stringify(productArray));
+    console.log("updated successfully.");
+    // getWishlistDetails();
+  } catch (error) {
+    console.error(error);
+  }
+};
+export default function CartCta({ data, calculateTotal, countDetails }) {
+  console.log("cta count", countDetails);
+
   const [cartValue, setCartValue] = useState({
     count: 1,
     type: "add",
@@ -20,6 +48,13 @@ export default function CartCta({ data, calculateTotal }) {
         count: prevValue.count + 1,
         type: "add",
       }));
+      const preVal = countDetails;
+      const payload = {
+        ...countDetails,
+        count: cartValue.count + 1 || 1,
+      };
+      console.log("payload", payload);
+      updateWishlistStatus(payload, "count");
     }
   };
   const formatCartValue = (value) => {

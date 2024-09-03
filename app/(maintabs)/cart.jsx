@@ -1,32 +1,90 @@
 import { View, Text, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import CartCard from "../../components/cart/CartCard";
-import data from "../../data.json"
-
+import productData from "../../data.json";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { router } from "expo-router";
+const getProductDetails = async () => {
+  try {
+    const productDetails = await AsyncStorage.getItem("productDetails");
+    // console.log(productDetails);
+    return productDetails ? JSON.parse(productDetails) : [];
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
 export default function cart() {
   const [total, setTotal] = useState(0);
+  const [data, setData] = useState([]);
+  const [cartData, setCartData] = useState([]);
   function calculateTotal(price, count, type = "add") {
-    console.log("price", price);
-    console.log("count", count);
+    // console.log("price", price);
+    // console.log("count", count);
     const total = price;
     if (type === "add") {
-      console.log("Total", total);
+      // console.log("Total", total);
       setTotal((prevTotal) => prevTotal + total);
     } else if (type === "minus") {
-      console.log("Total", total);
+      // console.log("Total", total);
       setTotal((prevTotal) => prevTotal - total);
     }
   }
+  const getWishlistDetails = async () => {
+    const res = await getProductDetails();
+    const filterCartItems = res.filter((data) => {
+      if (data.cart == true) {
+        return data;
+      }
+    });
+    const filteredProducts = [];
+    productData.filter((product) => {
+      filterCartItems.some((data) => {
+        if (data.id == product.id) {
+          // console.log(data.id);
+          // console.log(product);
+          filteredProducts.push(product);
+        }
+      });
+    });
+    // console.log("final", filteredProducts);
+
+    setData(filteredProducts);
+    setCartData(filterCartItems);
+  };
+  useEffect(() => {
+    getWishlistDetails();
+  }, []);
+  // console.log("data", data);l
+  if (data.length == 0 || null) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text className="font-Sora-Regular text-base text-black">
+          Your bag is very light
+        </Text>
+      </View>
+    );
+  }
+  const proceedCheckout = () => {
+    router.push({
+      pathname: "homestack/order",
+      params: {
+        wishlistItem: true, 
+      },
+    });
+  };
   return (
     <View className="bg-background flex-1">
       <ScrollView className="">
-        {data.map((data) => (
+        {data.map((data, i) => (
           <CartCard
             data={data}
             calculateTotal={calculateTotal}
             key={data?.id}
+            count={cartData[i]}
           />
+          // <Text key={i}>hello</Text>
         ))}
         <View className="mt-6 px-5">
           <Text className="font-Sora-SemiBold text-base text-black mb-4">
@@ -57,7 +115,11 @@ export default function cart() {
           </View>
         </View>
         <View className="px-6 mb-16 py-6 mt-auto">
-          <Button title="Proceed to checkout" style={"mt-0"} />
+          <Button
+            title="Proceed to checkout"
+            style={"mt-0"}
+            onPress={proceedCheckout}
+          />
         </View>
       </ScrollView>
     </View>

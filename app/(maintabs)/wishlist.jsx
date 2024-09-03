@@ -17,7 +17,6 @@ const getProductDetails = async () => {
 
 export default function wishlist() {
   const [wishlistItem, setWishlistItem] = useState([]);
-  const [reload, setReload] = useState(true);
   const getWishlistDetails = async () => {
     const res = await getProductDetails();
     const filterData = res.filter((data) => {
@@ -31,8 +30,9 @@ export default function wishlist() {
     getWishlistDetails();
   }, []);
 
-  const updateWishlistStatus = async (product) => {
+  const updateWishlistStatus = async (product,type) => {
     console.log("product value", product);
+    console.log("product type", type);
     if (product == null || undefined) {
       return null;
     }
@@ -43,7 +43,7 @@ export default function wishlist() {
         (item) => item.id === product.id
       );
       if (productIndex !== -1) {
-        productArray[productIndex].wishlist = product.wishlist;
+        productArray[productIndex][type] = product[type];
       } else {
         productArray.push(product);
       }
@@ -57,7 +57,6 @@ export default function wishlist() {
       console.error(error);
     }
   };
-  console.log("wishlist page");
   if (wishlistItem.length == 0 || null) {
     return <EmptyWishlist />;
   } 
