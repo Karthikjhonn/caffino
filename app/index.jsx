@@ -7,7 +7,7 @@ import { router } from "expo-router";
 export default function SplashScreen() {
   useEffect(() => {
     setTimeout(() => {
-      router.replace("/homestack/home");
+      // router.replace("/homestack/home");
       // router.replace("/cart");
     }, 100);
   }, []);
@@ -29,7 +29,7 @@ export default function SplashScreen() {
           </Text>
           <Pressable
             className="bg-accent min-h-[58px] mt-6 rounded-2xl"
-            onPress={() => router.push("/home")}
+            onPress={() => router.replace("/homestack/home")}
           >
             <Text className="text-base text-white text-center font-Sora-SemiBold capitalize my-auto">
               get started

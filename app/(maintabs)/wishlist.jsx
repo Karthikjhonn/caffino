@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
-import React, { useEffect, useState } from "react";
+import { View, Text, ActivityIndicator } from "react-native";
+import React, { useCallback,  useState } from "react";
 import FavoritesCard from "../../components/Favorites/FavoritesCard";
 import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import data from "../../data.json";
+import { useFocusEffect } from "@react-navigation/native";
 const getProductDetails = async () => {
   try {
     const productDetails = await AsyncStorage.getItem("productDetails");
@@ -17,7 +18,9 @@ const getProductDetails = async () => {
 
 export default function wishlist() {
   const [wishlistItem, setWishlistItem] = useState([]);
+  const [loader, setLoader] = useState(true);
   const getWishlistDetails = async () => {
+    setLoader(true);
     const res = await getProductDetails();
     const filterData = res.filter((data) => {
       if (data.wishlist == true) {
@@ -25,12 +28,15 @@ export default function wishlist() {
       }
     });
     setWishlistItem(filterData);
+    setLoader(false);
   };
-  useEffect(() => {
-    getWishlistDetails();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      getWishlistDetails();     
+    }, [])
+  );
 
-  const updateWishlistStatus = async (product,type) => {
+  const updateWishlistStatus = async (product, type) => {
     console.log("product value", product);
     console.log("product type", type);
     if (product == null || undefined) {
@@ -57,9 +63,16 @@ export default function wishlist() {
       console.error(error);
     }
   };
+  if (loader) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#c67c4e" />
+      </View>
+    );
+  }
   if (wishlistItem.length == 0 || null) {
     return <EmptyWishlist />;
-  } 
+  }
   return (
     <View className="py-6 px-4">
       {wishlistItem?.map((id, i) => (

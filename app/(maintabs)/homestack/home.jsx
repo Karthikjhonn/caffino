@@ -15,14 +15,14 @@ import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import TabItem from "../../../components/TabItem";
 import Card from "../../../components/Card";
-import axios from "axios";
 import getDetails from "../../../hooks/GetDetails";
-
+import * as Location from "expo-location";
+import { Alert, Linking } from "react-native";
 const coffee = [
   "all coffee",
   "Machiato",
   "latte",
-  "american start",
+  "american star",
   "cold coffee",
 ];
 
@@ -72,7 +72,67 @@ export default function Home() {
 
 const headerContent = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [city, setCity] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const requestLocationPermission = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission to access location was denied.");
+      Alert.alert(
+        "Location Permission Required",
+        "Location access is mandatory for this app to function. Please enable location services in your device settings.",
+        [
+          { text: "Go to Settings", onPress: () => Linking.openSettings() },
+        ]
+      );
+      return false;
+    }
+    return true;
+  };
 
+  const fetchLocation = async () => {
+    const hasPermission = await requestLocationPermission();
+    if (!hasPermission) return;
+
+    try {
+      let { coords } = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High,
+      });
+      const { latitude, longitude } = coords;
+
+      let reverseGeocode = await Location.reverseGeocodeAsync({
+        latitude,
+        longitude,
+      });
+
+      if (reverseGeocode.length > 0 && reverseGeocode[0].city) {
+        setCity(reverseGeocode[0].city);
+        setErrorMsg(null); 
+      } else {
+        setErrorMsg("Unable to determine the city.");
+        Alert.alert(
+          "Error",
+          "Unable to determine the city from the current location. Please try again.",
+          [{ text: "OK" }]
+        );
+      }
+    } catch (error) {
+      setErrorMsg(
+        "Current location is unavailable."
+      );
+      // console.error("Location error:", error);
+      Alert.alert(
+        "Error",
+        "Current location is unavailable. Please ensure that location services are enabled and try again.",
+        [{ text: "Go to Settings", onPress: () => Linking.openSettings() }]
+      );
+    }
+  };
+
+  useEffect(() => {
+    fetchLocation();
+  }, []);
+  
   const handlePress = (index) => {
     setSelectedTab(index);
     const itemWidth = 120;
@@ -97,7 +157,7 @@ const headerContent = () => {
         </Text>
         <View className="flex-row space-x-1">
           <Text className="text-offgray text-sm font-Sora-SemiBold capitalize">
-            chennai, india
+          {city ? <Text>{city}</Text> : <Text>{errorMsg || "Loading..."}</Text>}
           </Text>
           <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
         </View>
