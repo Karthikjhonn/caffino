@@ -1,5 +1,5 @@
 import { View, Text, ActivityIndicator } from "react-native";
-import React, { useCallback,  useState } from "react";
+import React, { useCallback, useState } from "react";
 import FavoritesCard from "../../components/Favorites/FavoritesCard";
 import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -32,7 +32,7 @@ export default function wishlist() {
   };
   useFocusEffect(
     useCallback(() => {
-      getWishlistDetails();     
+      getWishlistDetails();
     }, [])
   );
 
@@ -58,7 +58,9 @@ export default function wishlist() {
         JSON.stringify(productArray)
       );
       console.log("updated successfully.");
-      getWishlistDetails();
+      if (type == "wishlist") {
+        getWishlistDetails();
+      }
     } catch (error) {
       console.error(error);
     }
