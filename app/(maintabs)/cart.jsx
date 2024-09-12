@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, ActivityIndicator } from "react-native";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Button from "../../components/Button";
 import CartCard from "../../components/cart/CartCard";
 import productData from "../../data.json";
@@ -56,11 +56,14 @@ export default function cart() {
     setCartData(filterCartItems);
     setLoader(false);
   };
-  useFocusEffect(
-    useCallback(() => {
-      getWishlistDetails();
-    }, [])
-  );
+  // useFocusEffect(
+  //   useCallback(() => {
+  //     getWishlistDetails();
+  //   }, [])
+  // );
+  useEffect(() => {
+    getWishlistDetails();
+  }, []);
   // console.log("data", data);l
   if (loader) {
     return (
