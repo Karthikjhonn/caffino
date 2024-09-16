@@ -167,7 +167,7 @@ const headerContent = () => {
             <TextInput
               placeholder="Search coffee"
               placeholderTextColor="#e3e3e3"
-              className="font-Sora-Regular text-sm text-offgray placeholder:text-offgray"
+              className="font-Sora-Regular text-sm text-offgray placeholder:text-offgray !caret-accent"
             />
           </View>
           <TouchableOpacity
