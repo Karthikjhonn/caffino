@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, Image } from "react-native";
 import React, { useCallback, useState } from "react";
 import FavoritesCard from "../../components/Favorites/FavoritesCard";
 import { StatusBar } from "expo-status-bar";
@@ -92,9 +92,18 @@ export default function wishlist() {
 
 const EmptyWishlist = () => {
   return (
-    <View className="flex-1 justify-center items-center">
-      <Text className="font-Sora-Regular text-base text-black">
-        Wishlist is empty
+    <View className="flex-1 justify-center items-center ">
+      <Image
+        source={require("../../assets/images/Sign Board Floating With Chain 3D Model.png")}
+        className="object-contain w-64 h-64"
+      />
+      <Image
+        source={require("../../assets/images/Ellipse.png")}
+        className="object-contain -z-10 -translate-y-10"
+      />
+      <Text className="font-Sora-Regular text-center text-base text-black z-10 max-w-xs -translate-y-5">
+        Your wishlist needs a little caffeine! Explore our blends and add your
+        top picks. 🌿
       </Text>
     </View>
   );
