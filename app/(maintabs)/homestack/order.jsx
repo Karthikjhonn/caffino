@@ -6,9 +6,6 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import Button from "../../../components/Button";
-import Entypo from "@expo/vector-icons/Entypo";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import AddToCartCard from "../../../components/AddToCartCard";
 import Discount from "../../../components/Discount";
 import { router, useLocalSearchParams } from "expo-router";
@@ -17,6 +14,7 @@ import DeliveryAddress from "../../../components/DeliveryAddress";
 import productData from "../../../data.json";
 import CustomHeader from "../../../components/Navigation/CustomHeader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Wallet from "../../../components/wallet/Wallet";
 const getProductDetails = async () => {
   try {
     const productDetails = await AsyncStorage.getItem("productDetails");
@@ -30,7 +28,7 @@ const getProductDetails = async () => {
 export default function Order() {
   const { id, wishlistItem } = useLocalSearchParams();
   console.log(wishlistItem);
-  
+
   const [orderType, setOrderType] = useState(1);
   const [total, setTotal] = useState(0);
   const [cartData, setCartData] = useState([]);
@@ -178,7 +176,10 @@ export default function Order() {
                     ($1.5)
                   </Text>
                   <Text className="font-Sora-SemiBold text-sm text-black text-right">
-                    $ {(data[0]?.price - 8).toFixed(2)}
+                    ${" "}
+                    {(data[0]?.price - 8).toFixed(2) == NaN
+                      ? (data[0]?.price - 8).toFixed(2)
+                      : "1.02"}
                   </Text>
                 </View>
               </View>
@@ -187,28 +188,8 @@ export default function Order() {
         </View>
       </ScrollView>
       {/* bottom sticky */}
-      <View className="bg-white px-6 py-6  min-h-[108px] space-y-4 rounded-t-2xl">
-        <View className="flex-row justify-between items-center">
-          <View className=" space-x-2 flex-row items-center">
-            <View className="w-11 h-11 rounded-full justify-center items-center">
-              <Ionicons name="wallet-outline" size={24} color="#c67c4e" />
-            </View>
-            <View>
-              <Text className="text-sm font-Sora-SemiBold text-black capitalize tracking-wider">
-                Cash/wallet
-              </Text>
-              <Text className="text-xs font-Sora-SemiBold text-accent mt-1">
-                $ 6.56
-              </Text>
-            </View>
-          </View>
-          <TouchableOpacity className="w-11 h-11 rounded-full justify-center items-center">
-            <Entypo name="chevron-thin-down" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-        <View className="grow w-full">
-          <Button title="Order" style={"my-auto"} />
-        </View>
+      <View className="bg-white px-6 py-6  min-h-[108px]  rounded-t-2xl">
+        <Wallet />
       </View>
     </View>
   );
