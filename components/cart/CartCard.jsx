@@ -2,11 +2,14 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import Entypo from "@expo/vector-icons/Entypo";
 import CartCta from "./CartCta";
+import DeleteCartItem from "./DeleteCartItem";
 
-export default function CartCard({data ,calculateTotal,count}) {
-    
+export default function CartCard({ data, calculateTotal, count ,updateCartStatus}) {
   return (
-    <View className="border-b border-gray-300 flex-row bg-sky-4 00 shrink" key={data?.id}>
+    <View
+      className="border-b border-gray-300 flex-row bg-sky-4 00 shrink"
+      key={data?.id}
+    >
       <View className="w-1/3 grow bg-gray-100 p-2">
         <Image
           src={data?.image_url}
@@ -15,21 +18,16 @@ export default function CartCard({data ,calculateTotal,count}) {
       </View>
       <View className="grow p-2 py-4 shrink">
         {/* title  */}
-        <Text
-          className="capitalize text-base font-Sora-SemiBold text-black tracking-wide pe-0"
-          numberOfLines={1}
-        >
-          {data?.name}
-        </Text>
+        <DeleteCartItem data={data} updateCartStatus={updateCartStatus}/>
         {/* description  */}
         <Text
-          className="capitalize text-xs mt-0.5 font-Sora-Regular text-black tracking-wide pe-0"
+          className="capitalize text-xs mt-1 font-Sora-Regular text-black tracking-wide pe-0 -z-10"
           numberOfLines={2}
         >
           {data?.description}
         </Text>
         {/* weight & Specific  */}
-        <View className="flex-row items-center space-x-2 mt-1">
+        <View className="flex-row items-center space-x-2 mt-1.5">
           <Text
             className="capitalize text-xs font-Sora-Regular tracking-wider text-gray-400 border-r border-gray-200"
             style={{ paddingEnd: 8 }}
@@ -65,7 +63,11 @@ export default function CartCard({data ,calculateTotal,count}) {
             $ 3.52
           </Text>
         </View>
-        <CartCta data={data} calculateTotal={calculateTotal} countDetails={count}/>
+        <CartCta
+          data={data}
+          calculateTotal={calculateTotal}
+          countDetails={count}
+        />
       </View>
     </View>
   );

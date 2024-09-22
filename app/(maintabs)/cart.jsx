@@ -15,6 +15,7 @@ const getProductDetails = async () => {
     return [];
   }
 };
+
 export default function cart() {
   const [total, setTotal] = useState(0);
   const [data, setData] = useState([]);
@@ -51,15 +52,48 @@ export default function cart() {
       });
     });
     // console.log("final", filteredProducts);
-
+    setTotal(0);
     setData(filteredProducts);
     setCartData(filterCartItems);
-    setLoader(false);
+    setTimeout(() => {
+      setLoader(false);
+    }, 200);
+  };
+  const updateCartStatus = async (product, type) => {
+    console.log("update cart product", product);
+    if (!product) {
+      return null;
+    }
+    try {
+      const productDetails = await AsyncStorage.getItem("productDetails");
+      let productArray = productDetails ? JSON.parse(productDetails) : [];
+
+      const productIndex = productArray.findIndex(
+        (item) => item.id == product.id
+      );
+
+      if (productIndex !== -1) {
+        productArray[productIndex][type] = product[type];
+      } else {
+        productArray.push(product);
+      }
+      await AsyncStorage.setItem(
+        "productDetails",
+        JSON.stringify(productArray)
+      );
+      console.log(`cart updated successfully.`);
+      getWishlistDetails();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  useEffect(() => {
-    getWishlistDetails();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      setLoader(true);
+      getWishlistDetails();
+    }, [])
+  );
   if (loader) {
     return (
       <View className="flex-1 justify-center items-center">
@@ -67,7 +101,7 @@ export default function cart() {
       </View>
     );
   }
-  if (data.length == 0 || null) {
+  if ((!loader && data.length == 0) || null) {
     return <EmptyWishlist />;
   }
   const proceedCheckout = () => {
@@ -87,6 +121,7 @@ export default function cart() {
             calculateTotal={calculateTotal}
             key={data?.id}
             count={cartData[i]}
+            updateCartStatus={updateCartStatus}
           />
           // <Text key={i}>hello</Text>
         ))}
@@ -142,7 +177,8 @@ const EmptyWishlist = () => {
         className="object-contain -z-10 -translate-y-24"
       />
       <Text className="font-Sora-Regular text-center text-base text-black z-10 max-w-xs -translate-y-20">
-        Your cart is empty—time to fill it with your favorite beans and brews! ☕
+        Your cart is empty—time to fill it with your favorite beans and brews!
+        ☕
       </Text>
     </View>
   );
