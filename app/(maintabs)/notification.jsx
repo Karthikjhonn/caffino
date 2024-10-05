@@ -1,65 +1,57 @@
-import { View, Text, ScrollView, Image, Pressable } from "react-native";
-import React from "react";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+import { Text, Dimensions } from "react-native";
+import React, { useState } from "react";
+import { TabView, SceneMap, TabBar } from "react-native-tab-view";
+import MyOrders from "../../components/notification/MyOrders";
+import OrderHistory from "../../components/notification/OrderHistory";
+import MyNotification from "../../components/notification/MyNotification";
 
 export default function notification() {
+  const initialLayout = { width: Dimensions.get("window").width };
+
+  const [index, setIndex] = useState(0);
+  const [routes] = useState([
+    { key: "myOrders", title: "My Orders" },
+    { key: "orderHistory", title: "Order History" },
+    { key: "myDiscount", title: "Discount" },
+  ]);
+
+  const renderScene = SceneMap({
+    myOrders: MyOrders,
+    orderHistory: OrderHistory,
+    myDiscount: MyNotification,
+  });
+
   return (
-    <ScrollView className="font-Sora-Regular bg-background">
-      <View className="py-6 pt-0">
-        <Pressable
-          android_ripple={{ color: "#e5e7eb" }}
-          className="p-4 flex-row items-center space-x-2 border-b border-gray-200"
-        >
-          <View className="w-12 h-12 rounded-2xl bg-[#6B9080]  justify-center items-center">
-            <FontAwesome5 name="gifts" size={24} color="#A4C3B2" />
-          </View>
-          <View className="shrink grow">
-            <Text className="text-base font-Sora-Medium capitalize">
-              Sunrise time
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={initialLayout}
+      style={{ shadowOpacity: 0 }}
+      renderTabBar={(props) => (
+        <TabBar
+          {...props}
+          indicatorStyle={{ backgroundColor: "#C67C4E" }}
+          style={{ backgroundColor: "white", shadowOpacity: 0, elevation: 0 }}
+          className="border-t-[0.5px] border-gray-200/75"
+          labelStyle={{
+            color: "#C67C4E",
+            fontFamily: "Sora-Medium",
+            fontSize: 12,
+            textTransform: "capitalize",
+            textAlign: "center",
+          }}
+          renderLabel={({ route, focused, color }) => (
+            <Text
+              className={`text-xs font-Sora-Medium text-center ${
+                focused ? "text-accent" : "text-gray-400"
+              }`}
+            >
+              {route.title}
             </Text>
-            <Text className="text-sm font-Sora-Regular capitalize">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </Text>
-            <Text className="text-[10px] font-Sora-Regular capitalize text-right">
-              <View className="w-1.5 h-1.5 rounded-full bg-gray-300/50 "></View>{" "}
-              05.23 Am
-            </Text>
-          </View>
-        </Pressable>
-        <Pressable
-          android_ripple={{ color: "#e5e7eb" }}
-          className="p-4 flex-row items-center space-x-2 border-b border-gray-200"
-        >
-          <View className="w-12 h-12 rounded-2xl bg-[#b6ccfe]  justify-center items-center">
-            <FontAwesome5 name="gifts" size={24} color="#e2eafc" />
-          </View>
-          <View className="shrink grow">
-            <Text className="text-base font-Sora-Medium capitalize">
-              good morning
-            </Text>
-            <Text className="text-sm font-Sora-Regular capitalize">
-              suscipit facilis tempore corporis alias minus vel.
-            </Text>
-            <Text className="text-[10px] font-Sora-Regular capitalize text-right">
-              <View className="w-1.5 h-1.5 rounded-full bg-gray-300/50 "></View>{" "}
-              09.45 Am
-            </Text>
-          </View>
-        </Pressable>
-        {/* <View className="justify-center h-48 m-4 bg-yellow-400">
-          <View className="space-y-1.5 p-4">
-            <Text className="text-5xl tracking-widest font-Sora-Medium">
-              Fresh
-            </Text>
-            <Text className="text-5xl tracking-widest font-Sora-Medium">
-              Grind,
-            </Text>
-            <Text className="text-5xl tracking-widest font-Sora-Medium">
-              Fresh Mind
-            </Text>
-          </View>
-        </View> */}
-      </View>
-    </ScrollView>
+          )}
+        />
+      )}
+    />
   );
 }

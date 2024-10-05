@@ -95,13 +95,13 @@ const EmptyWishlist = () => {
     <View className="flex-1 justify-center items-center ">
       <Image
         source={require("../../assets/images/Sign Board Floating With Chain 3D Model.png")}
-        className="object-contain w-64 h-64"
+        className="object-contain w-20 h-20"
       />
       <Image
-        source={require("../../assets/images/Ellipse.png")}
-        className="object-contain -z-10 -translate-y-10"
+        source={require("../../assets/images/Ellipse1.png")}
+        className="object-contain   -z-10 -translate-y-4"
       />
-      <Text className="font-Sora-Regular text-center text-base text-black z-10 max-w-xs -translate-y-5">
+      <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-2">
         Your wishlist needs a little caffeine! Explore our blends and add your
         top picks. 🌿
       </Text>

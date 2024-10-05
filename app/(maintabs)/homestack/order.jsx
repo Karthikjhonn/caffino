@@ -82,7 +82,17 @@ export default function Order() {
       setTotal((prevTotal) => prevTotal - total);
     }
   }
-
+const getOrderDetails = ()=>{
+  const payload ={
+    TotalAmount:total,
+    orderType:orderType,
+    quantity:2,
+    productId:[1,5],
+    dAddress:"chennai"
+  }
+  console.log(payload);
+  
+}
   return (
     <View className="flex-1 bg-background">
       <CustomHeader title={"Order"} navigation={router.back} />
@@ -189,7 +199,7 @@ export default function Order() {
       </ScrollView>
       {/* bottom sticky */}
       <View className="bg-white px-6 py-6  min-h-[108px]  rounded-t-2xl">
-        <Wallet />
+        <Wallet  placeOrder={getOrderDetails}/>
       </View>
     </View>
   );

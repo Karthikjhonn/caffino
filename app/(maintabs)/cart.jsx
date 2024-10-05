@@ -170,13 +170,13 @@ const EmptyWishlist = () => {
     <View className="flex-1 justify-center items-center ">
       <Image
         source={require("../../assets/images/Big Craft Paper Bag With Rope Handles 3D Model.png")}
-        className="object-contain w-64 h-64"
+        className="object-contain w-24 h-24"
       />
       <Image
-        source={require("../../assets/images/Ellipse.png")}
-        className="object-contain -z-10 -translate-y-24"
+        source={require("../../assets/images/Ellipse1.png")}
+        className="object-contain -z-10 -translate-y-9"
       />
-      <Text className="font-Sora-Regular text-center text-base text-black z-10 max-w-xs -translate-y-20">
+      <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-5">
         Your cart is empty—time to fill it with your favorite beans and brews!
         ☕
       </Text>
