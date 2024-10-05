@@ -12,9 +12,18 @@ import Feather from "@expo/vector-icons/Feather";
 import Button from "./Button";
 export default function Discount() {
   const [modalVisible, setModalVisible] = useState(false);
-
+  const [code, setCode] = useState(null);
   const handleModel = () => {
     setModalVisible(!modalVisible);
+  };
+  console.log(code);
+  const applyCode = () => {
+    console.log("apply");
+
+    if (code !== "" && code != null ) {
+      console.log("apply in", code);
+      handleModel();
+    }
   };
   return (
     <>
@@ -54,6 +63,8 @@ export default function Discount() {
                   placeholder="Enter coupon code.."
                   placeholderTextColor="#e3e3e3"
                   className="font-Sora-Medium text-base text-black placeholder:text-gray-400"
+                  onChangeText={(e) => setCode(e)}
+                  value={code || ""}
                 />
               </View>
               <Text className="font-Sora-Regular text-xs mt-2 px-px text-gray-500">
@@ -61,7 +72,7 @@ export default function Discount() {
                 Use code WELCOME10 at checkout.
               </Text>
               <View className="mt-4">
-                <Button title="Apply" />
+                <Button title="Apply" onPress={applyCode} />
               </View>
             </View>
           </Pressable>
