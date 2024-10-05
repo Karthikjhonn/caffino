@@ -5,13 +5,13 @@ import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
 
 export default function SplashScreen() {
-  useEffect(() => {
-    setTimeout(() => {
-      // router.replace("/homestack/home");
-      router.replace("/notification");
-      // router.replace("/cart");
-    }, 100);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     // router.replace("/homestack/home");
+  //     router.replace("/notification");
+  //     // router.replace("/cart");
+  //   }, 100);
+  // }, []);
   return (
     <>
       <View className="flex-1  items-center bg-[#000] bg-g reen-400 pb-16 relative">
