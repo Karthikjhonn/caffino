@@ -176,7 +176,7 @@ const EmptyWishlist = () => {
         source={require("../../assets/images/Ellipse1.png")}
         className="object-contain -z-10 -translate-y-9"
       />
-      <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-5">
+      <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-7">
         Your cart is empty—time to fill it with your favorite beans and brews!
         ☕
       </Text>

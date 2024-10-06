@@ -4,11 +4,9 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 const TrackOrder = ({ data }) => {
-  const [expanded, setExpanded] = useState(false);
 
-  const handlePress = () => setExpanded(!expanded);
   return (
-    <View className="border border-gray-200 rounded-2xl bg-white  overflow-hidden mb-4">
+    <View className="border border-gray-200 rounded-2xl bg-white  overflow-hidden mb-6">
       <View className="p-2 flex-row space-x-2">
         <View className="bg-gray-100 w-24 h-24 rounded-lg">
           <Image
@@ -64,7 +62,11 @@ const TrackOrder = ({ data }) => {
               </Text>
             </View>
             <View className="flex items-center space-y-2 bg-white">
-              <AntDesign name="checkcircleo" size={22} color="#f9f2ed" />
+              <AntDesign
+                name={`${data?.id == 13 ? "checkcircle" : "checkcircleo"}`}
+                size={22}
+                color={`${data?.id == 13 ? "#c67c4e" : "#f9f2ed"}`}
+              />
               <Text className="text-black font-Sora-Regular text-center text-xs">
                 In transit
               </Text>
