@@ -5,18 +5,18 @@ import TrackOrder from "./TrackOrder";
 const MyOrders = () => {
   const data = [
     {
-      _id: "6424335b59f9f6fdd657d2e1",
-      id: 1,
-      name: "Signature Blend",
+      _id: "6424353f59f9f6fdd657d2ee",
+      id: 13,
+      name: "Coconut Kiss",
       description:
-        "A rich, full-bodied coffee with notes of dark chocolate and black cherry. Grown on the slopes of a mist-covered mountain in Central America.",
-      price: 12.99,
-      region: "Central America",
+        "A light and refreshing coffee from the shores of the Asia Pacific, with a subtle coconut flavor.",
+      price: 9.99,
+      region: "Asia Pacific",
       weight: 500,
-      flavor_profile: ["Dark Chocolate", "Black Cherry"],
-      grind_option: ["Whole Bean", "Cafetiere", "Filter", "Espresso"],
-      roast_level: 3,
-      image_url: "https://iili.io/H8Y78Qt.webp",
+      roast_level: 2,
+      flavor_profile: ["Coconut"],
+      grind_option: ["Whole Bean", "Filter"],
+      image_url: "https://iili.io/H8Y7GQ1.webp",
     },
     {
       _id: "6424353559f9f6fdd657d2e9",
@@ -34,7 +34,7 @@ const MyOrders = () => {
     },
   ];
   return (
-    <ScrollView className="py-4 px-4">
+    <ScrollView className="py-6 px-4">
       <View className="mb-24">
         {data?.map((data, i) => (
           <TrackOrder key={i} data={data} />
