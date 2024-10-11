@@ -4,7 +4,7 @@
     "slug": "caffino",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/ic_launcher/play_store_512.png",
+    "icon": "./assets/images/Abortlogo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/ic_launcher/play_store_512.png",
+        "foregroundImage": "./assets/images/Abortlogo.png",
         "backgroundColor": "#ffffff",
         "permissions": [
           "ACCESS_FINE_LOCATION"
