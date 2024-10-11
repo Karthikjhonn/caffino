@@ -17,8 +17,8 @@ const NetworkCheck = ({ children }) => {
     return (
       <View className="flex-1 justify-center items-center">
         <Image
-          className="w-24 h-24"
-          source={require("../../assets/images/No Connection Animated 3D Icon.gif")}
+          className="w-32 h-32"
+          source={require("../../assets/images/noconnection.png")}
         />
         <Text className="text-center font-Sora-Regular text-sm text-black">
           Please turn on your network!

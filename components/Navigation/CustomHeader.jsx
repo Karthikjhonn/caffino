@@ -17,7 +17,7 @@ function CustomHeader({ navigation, options, title, headerRight }) {
           <Ionicons name="chevron-back" size={22} color="black" />
         </Pressable>
       </View>
-      <Text className="text-base font-Sora-SemiBold text-black capitalize inline-flex ">
+      <Text className="text-base font-Sora-SemiBold text-black capitalize inline-flex " numberOfLines={1}>
         {title}
       </Text>
       {headerRight ? headerRight : <View className="w-10 h-10"></View>}

@@ -14,7 +14,7 @@ const outlineIcons = {
 };
 const themColor = "#c67c4e";
 function MyTabBar({ state, descriptors, navigation }) {
-  const hideTabBarRoutes = ["details", "order"];
+  const hideTabBarRoutes = ["details", "order","searchProduct","searchDetails"];
 
   const currentRoute = state.routes[state.index];
   let currentRouteName = currentRoute.name;
@@ -64,11 +64,7 @@ function MyTabBar({ state, descriptors, navigation }) {
           });
         };
         // console.log(route);
-
-        if (route.name === "order" || route.name === "details") {
-          return null;
-        }
-
+        // console.log(route.name);
         return (
           <TouchableOpacity
             accessibilityRole="button"
