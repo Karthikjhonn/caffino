@@ -7,6 +7,7 @@ import {
   FlatList,
   Dimensions,
   ActivityIndicator,
+  Pressable,
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
@@ -18,6 +19,7 @@ import Card from "../../../components/Card";
 import getDetails from "../../../hooks/GetDetails";
 import * as Location from "expo-location";
 import { Alert, Linking } from "react-native";
+import { router } from "expo-router";
 const coffee = [
   "all coffee",
   "Machiato",
@@ -81,9 +83,7 @@ const headerContent = () => {
       Alert.alert(
         "Location Permission Required",
         "Location access is mandatory for this app to function. Please enable location services in your device settings.",
-        [
-          { text: "Go to Settings", onPress: () => Linking.openSettings() },
-        ]
+        [{ text: "Go to Settings", onPress: () => Linking.openSettings() }]
       );
       return false;
     }
@@ -107,7 +107,7 @@ const headerContent = () => {
 
       if (reverseGeocode.length > 0 && reverseGeocode[0].city) {
         setCity(reverseGeocode[0].city);
-        setErrorMsg(null); 
+        setErrorMsg(null);
       } else {
         setErrorMsg("Unable to determine the city.");
         Alert.alert(
@@ -117,9 +117,7 @@ const headerContent = () => {
         );
       }
     } catch (error) {
-      setErrorMsg(
-        "Current location is unavailable."
-      );
+      setErrorMsg("Current location is unavailable.");
       // console.error("Location error:", error);
       Alert.alert(
         "Error",
@@ -132,7 +130,7 @@ const headerContent = () => {
   useEffect(() => {
     fetchLocation();
   }, []);
-  
+
   const handlePress = (index) => {
     setSelectedTab(index);
     const itemWidth = 120;
@@ -157,19 +155,24 @@ const headerContent = () => {
         </Text>
         <View className="flex-row space-x-1">
           <Text className="text-offgray text-sm font-Sora-SemiBold capitalize">
-          {city ? <Text>{city}</Text> : <Text>{errorMsg || "Loading..."}</Text>}
+            {city ? (
+              <Text>{city}</Text>
+            ) : (
+              <Text>{errorMsg || "Loading..."}</Text>
+            )}
           </Text>
           <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
         </View>
         {/* search section  */}
         <View className="flex-row items-center mt-6 space-x-3">
-          <View className="px-3 bg-black rounded-xl min-h-[52px] justify-center flex-1">
-            <TextInput
-              placeholder="Search coffee"
-              placeholderTextColor="#e3e3e3"
-              className="font-Sora-Regular text-sm text-offgray placeholder:text-offgray !caret-accent"
-            />
-          </View>
+          <Pressable
+            onPress={() => router.push("/homestack/searchProduct")}
+            className="px-3 bg-black rounded-xl min-h-[52px] justify-center flex-1"
+          >
+            <Text className="font-Sora-Regular text-sm text-offgray placeholder:text-offgray">
+              Search coffee..
+            </Text>
+          </Pressable>
           <TouchableOpacity
             className="bg-accent justify-center items-center h-[52px] w-12 rounded-xl"
             activeOpacity={0.7}

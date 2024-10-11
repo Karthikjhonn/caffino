@@ -8,7 +8,8 @@ export default function SplashScreen() {
   // useEffect(() => {
   //   setTimeout(() => {
   //     // router.replace("/homestack/home");
-  //     router.replace("/notification");
+  //     // router.replace("/homestack/searchProduct");
+  //     // router.replace("/notification");
   //     // router.replace("/cart");
   //   }, 100);
   // }, []);
@@ -16,7 +17,6 @@ export default function SplashScreen() {
     <>
       <View className="flex-1  items-center bg-[#000] bg-g reen-400 pb-16 relative">
         <Image
-          // src="https://images.unsplash.com/photo-1549652127-2e5e59e86a7a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fHw%3D"
           source={require("../assets/images/welcome.png")}
           className="object-contain w-full h-3/4 max-h-[550px] absolute top-0 left-0"
         />
