@@ -25,7 +25,7 @@ const coffee = [
   "Macaco",
   "latte",
   "american star",
-  "cold coffee",
+  "cold coffee"
 ];
 
 const screenWidth = Dimensions.get("window").width;
