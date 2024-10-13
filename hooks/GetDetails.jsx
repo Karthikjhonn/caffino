@@ -11,9 +11,11 @@ const getDetails = (url, options = {}) => {
       try {
         setLoading(true);
         const response = await axios.get(url, options);
-        setData(response.data);
-        console.log("hook");
-        
+        if (response.status === 200) {
+          setLoading(false);
+          setData(response.data);
+          console.log("hook");
+        }
       } catch (err) {
         setError(err);
       } finally {
