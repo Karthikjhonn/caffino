@@ -23,7 +23,7 @@ import { router } from "expo-router";
 import { Skeleton } from "moti/skeleton";
 const coffee = [
   "all coffee",
-  "Machiato",
+  "Macaco",
   "latte",
   "american star",
   "cold coffee",
