@@ -12,8 +12,8 @@ const getDetails = (url, options = {}) => {
         setLoading(true);
         const response = await axios.get(url, options);
         if (response.status === 200) {
-          setLoading(false);
           setData(response.data);
+          setLoading(false);
           console.log("hook");
         }
       } catch (err) {
