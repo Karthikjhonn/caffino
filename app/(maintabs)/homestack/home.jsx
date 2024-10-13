@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
   Pressable,
 } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import Entypo from "@expo/vector-icons/Entypo";
@@ -20,6 +20,7 @@ import getDetails from "../../../hooks/GetDetails";
 import * as Location from "expo-location";
 import { Alert, Linking } from "react-native";
 import { router } from "expo-router";
+import { Skeleton } from "moti/skeleton";
 const coffee = [
   "all coffee",
   "Machiato",
@@ -31,16 +32,22 @@ const coffee = [
 const screenWidth = Dimensions.get("window").width;
 
 export default function Home() {
+  const emptyPlaceHolder = useMemo(
+    () => Array.from({ length: 10 }).map(() => null),
+    []
+  );
+
   const { data, loading, error } = getDetails(
     "https://fake-coffee-api.vercel.app/api"
   );
-  if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#c67c4e" />
-      </View>
-    );
-  }
+  
+  // if (loading) {
+  //   return (
+  //     <View className="flex-1 justify-center items-center">
+  //       <ActivityIndicator size="large" color="#c67c4e" />
+  //     </View>
+  //   );
+  // }
   if (error) {
     return (
       <View className="flex-1 justify-center items-center">
@@ -53,8 +60,8 @@ export default function Home() {
     <>
       <FlatList
         ListHeaderComponent={headerContent}
-        data={data}
-        renderItem={(data) => <Card data={data} />}
+        data={loading ? emptyPlaceHolder : data}
+        renderItem={(data) => <Card data={data} loading={loading} />}
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         columnWrapperStyle={{
@@ -120,13 +127,19 @@ const headerContent = () => {
       setErrorMsg("Current location is unavailable.");
       // console.error("Location error:", error);
       Alert.alert(
-        "Error",
+        "Enable Location",
         "Current location is unavailable. Please ensure that location services are enabled and try again.",
         [{ text: "Go to Settings", onPress: () => Linking.openSettings() }]
       );
     }
   };
-
+  function askPermission() {
+    Alert.alert(
+      "Error",
+      "Current location is unavailable. Please ensure that location services are enabled and try again.",
+      [{ text: "Go to Settings", onPress: () => Linking.openSettings() }]
+    );
+  }
   useEffect(() => {
     fetchLocation();
   }, []);
@@ -158,10 +171,21 @@ const headerContent = () => {
             {city ? (
               <Text>{city}</Text>
             ) : (
-              <Text>{errorMsg || "Loading..."}</Text>
+              <Skeleton
+                height={18}
+                width={100}
+                radius={3}
+                colorMode="dark"
+                backgroundColor="#313131"
+                show={!errorMsg}
+              >
+                <Text className="text-white">{errorMsg || "Loading..."}</Text>
+              </Skeleton>
             )}
           </Text>
-          <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
+          <Pressable>
+            <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
+          </Pressable>
         </View>
         {/* search section  */}
         <View className="flex-row items-center mt-6 space-x-3">
