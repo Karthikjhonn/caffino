@@ -22,7 +22,7 @@ import { Alert, Linking } from "react-native";
 import { router } from "expo-router";
 const coffee = [
   "all coffee",
-  "Machiato",
+  "Macaco",
   "latte",
   "american star",
   "cold coffee",
