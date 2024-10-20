@@ -1,8 +1,11 @@
 import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import TrackOrder from "./TrackOrder";
+import { useFocusEffect } from "expo-router";
+import { Skeleton } from "moti/skeleton";
 
 const MyOrders = () => {
+  const [loading, setLoading] = useState(true);
   const data = [
     {
       _id: "6424353f59f9f6fdd657d2ee",
@@ -33,8 +36,46 @@ const MyOrders = () => {
       image_url: "https://iili.io/H8Y7wYv.webp",
     },
   ];
+  useFocusEffect(
+    useCallback(() => {
+      setTimeout(() => setLoading(false), 2000);
+    }, [])
+  );
+  if (loading) {
+    return (
+      <View className="py-6 px-4 pt-8 flex-1 space-y-6">
+        <View>
+          <Skeleton
+            height={280}
+            width={"100%"}
+            radius={16}
+            colorMode="light"
+            show
+          ></Skeleton>
+        </View>
+        <View>
+          <Skeleton
+            height={280}
+            width={"100%"}
+            radius={16}
+            colorMode="light"
+            show
+          ></Skeleton>
+        </View>
+        <View>
+          <Skeleton
+            height={280}
+            width={"100%"}
+            radius={16}
+            colorMode="light"
+            show
+          ></Skeleton>
+        </View>
+      </View>
+    );
+  }
   return (
-    <ScrollView className="py-6 px-4">
+    <ScrollView className="py-6 px-4" showsVerticalScrollIndicator={false}>
       <View className="mb-24">
         {data?.map((data, i) => (
           <TrackOrder key={i} data={data} />

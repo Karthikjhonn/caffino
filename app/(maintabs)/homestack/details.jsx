@@ -11,10 +11,12 @@ import Button from "../../../components/Button";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { router, useLocalSearchParams } from "expo-router";
 import Loader from "../../../components/Loader";
-import getDetails from "../../../hooks/GetDetails";
 import { StatusBar } from "expo-status-bar";
 import CustomHeader from "../../../components/Navigation/CustomHeader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getProducts } from "../../../api/ApiIndex";
+import PageLoader from "../../../components/common/PageLoader";
+import ErrorPage from "../../../components/common/ErrorPage";
 
 const updateWishlistStatus = async (product) => {
   console.log("product value", product);
@@ -57,6 +59,9 @@ const deleteProductDetails = async () => {
 };
 export default function Details() {
   const { id } = useLocalSearchParams();
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [loader, setLoader] = useState(false);
@@ -81,6 +86,7 @@ export default function Details() {
       }
     };
     getDetails();
+    getAllProduct();
     // deleteProductDetails();
   }, []);
   useEffect(() => {
@@ -113,22 +119,28 @@ export default function Details() {
       setLoader(false);
     }, 200);
   };
-  const { data, loading, error } = getDetails(
-    `https://fake-coffee-api.vercel.app/api/${id}`
-  );
+
+  const getAllProduct = async () => {
+    try {
+      const res = await getProducts(id);
+      console.log("detail res", res.status);
+      if (res.status === 200) {
+        setLoading(false);
+        console.log("detail res", res?.data[0]);
+        setData(res?.data);
+      }
+    } catch (error) {
+      console.log(error?.message);
+      setError(error?.message);
+      setLoading(false);
+    }
+  };
+
   if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#c67c4e" />
-      </View>
-    );
+    return <PageLoader />;
   }
   if (error) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <Text>Error: {error.message}</Text>
-      </View>
-    );
+    return <ErrorPage />;
   }
 
   return (
@@ -154,9 +166,8 @@ export default function Details() {
         {/* banner  */}
         <View className="bg-gray-300  rounded-2xl h-52 m-6">
           <Image
-            // src="https://images.unsplash.com/photo-1723962845257-d3bad7825001?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             src={data[0]?.image_url}
-            className="w-full h-full object-cover rounded-2xl"
+            className="w-full h-full object-cover  rounded-2xl"
           />
         </View>
         {/* product name & details  */}

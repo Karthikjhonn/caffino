@@ -15,6 +15,9 @@ import productData from "../../../data.json";
 import CustomHeader from "../../../components/Navigation/CustomHeader";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Wallet from "../../../components/wallet/Wallet";
+import { getProducts } from "../../../api/ApiIndex";
+import ErrorPage from "../../../components/common/ErrorPage";
+import PageLoader from "../../../components/common/PageLoader";
 const getProductDetails = async () => {
   try {
     const productDetails = await AsyncStorage.getItem("productDetails");
@@ -28,7 +31,9 @@ const getProductDetails = async () => {
 export default function Order() {
   const { id, wishlistItem } = useLocalSearchParams();
   console.log(wishlistItem);
-
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [orderType, setOrderType] = useState(1);
   const [total, setTotal] = useState(0);
   const [cartData, setCartData] = useState([]);
@@ -56,23 +61,28 @@ export default function Order() {
   };
   useEffect(() => {
     getWishlistDetails();
+    getAllProduct()
   }, []);
-  const { data, loading, error } = getDetails(
-    `https://fake-coffee-api.vercel.app/api/${id}`
-  );
+  const getAllProduct = async () => {
+    try {
+      const res = await getProducts(id);
+      console.log("detail res", res.status);
+      if (res.status === 200) {
+        setLoading(false);
+        console.log("detail res", res?.data[0]);
+        setData(res?.data);
+      }
+    } catch (error) {
+      console.log(error?.message);
+      setError(error?.message);
+      setLoading(false);
+    }
+  };
   if (loading) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <ActivityIndicator size="large" color="#c67c4e" />
-      </View>
-    );
+    return <PageLoader />;
   }
   if (error) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <Text>Error: {error.message}</Text>
-      </View>
-    );
+    return <ErrorPage />;
   }
   function calculateTotal(price, count, type = "add") {
     const total = price;
