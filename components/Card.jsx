@@ -31,7 +31,7 @@ export default function Card({ data, id, loading }) {
           <View className="bg-gray-50 rounded-[14px] w-full h-[128px] overflow-hidden">
             <Image
               src={data?.item?.image_url}
-              className="w-full h-full rounded-[14px] object-cover"
+              className="w-full h-full rounded-[14px] object-cover aspect-square mx-auto"
             />
             <View className="bg-black/[30%] p-2 px-3 absolute top-0 right-0 rounded-bl-3xl  h-7">
               <View className="flex-row space-x-1 items-center">

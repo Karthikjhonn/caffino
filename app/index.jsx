@@ -1,10 +1,12 @@
 import { View, Text, Image, Pressable } from "react-native";
-import React, { useEffect } from "react";
-import { FontProvider } from "../context/FontContext";
+import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { router } from "expo-router";
+import Loader from "../components/Loader";
+import Button from "../components/Button";
 
 export default function SplashScreen() {
+  const [loader, setLoader] = useState(false);
   // useEffect(() => {
   //   setTimeout(() => {
   //     // router.replace("/homestack/home");
@@ -13,6 +15,13 @@ export default function SplashScreen() {
   //     // router.replace("/cart");
   //   }, 100);
   // }, []);
+  const handleOnClick = () => {
+    setLoader(true);
+    setTimeout(() => {
+      router.replace("/homestack/home");
+      setLoader(false);
+    }, 500);
+  };
   return (
     <>
       <View className="flex-1  items-center bg-[#000] bg-g reen-400 pb-16 relative">
@@ -28,14 +37,12 @@ export default function SplashScreen() {
             Welcome to our cozy coffee corner, where every cup is a delightful
             for you.
           </Text>
-          <Pressable
-            className="bg-accent min-h-[58px] mt-6 rounded-2xl"
-            onPress={() => router.replace("/homestack/home")}
-          >
-            <Text className="text-base text-white text-center font-Sora-SemiBold capitalize my-auto">
-              get started
-            </Text>
-          </Pressable>
+         
+          <Button
+            title={loader ? <Loader /> : "get started"}
+            style={"mt-6"}
+            onPress={handleOnClick}
+          />
         </View>
       </View>
       <StatusBar style="light" translucent backgroundColor="transparent" />

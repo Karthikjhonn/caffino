@@ -21,40 +21,43 @@ import * as Location from "expo-location";
 import { Alert, Linking } from "react-native";
 import { router } from "expo-router";
 import { Skeleton } from "moti/skeleton";
+import { getProducts } from "../../../api/ApiIndex";
 const coffee = [
   "all coffee",
   "Macaco",
   "latte",
   "american star",
-  "cold coffee"
+  "cold coffee",
 ];
 
 const screenWidth = Dimensions.get("window").width;
 
 export default function Home() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const emptyPlaceHolder = useMemo(
-    () => Array.from({ length: 10 }).map(() => null),
+    () => Array.from({ length: 4 }).map(() => null),
     []
   );
 
-  const { data, loading, error } = getDetails(
-    "https://fake-coffee-api.vercel.app/api"
-  );
-  
-  // if (loading) {
-  //   return (
-  //     <View className="flex-1 justify-center items-center">
-  //       <ActivityIndicator size="large" color="#c67c4e" />
-  //     </View>
-  //   );
-  // }
-  if (error) {
-    return (
-      <View className="flex-1 justify-center items-center">
-        <Text>Error: {error.message}</Text>
-      </View>
-    );
-  }
+  const getAllProduct = async () => {
+    try {
+      const res = await getProducts();
+      console.log("new res", res.status);
+      if (res.status === 200) {
+        setLoading(false);
+        setData(res?.data);
+      }
+    } catch (error) {
+      console.log(error?.message);
+      setError(error?.message);
+    }
+  };
+
+  useEffect(() => {
+    getAllProduct();
+  }, []);
 
   return (
     <>
@@ -163,9 +166,18 @@ const headerContent = () => {
         end={{ x: 0, y: 1 }}
         className="max-h-[280px]  pt-14 px-6"
       >
-        <Text className="text-offgray text-xs font-Sora-Regular mb-1">
-          Location
-        </Text>
+        <Skeleton
+          height={16}
+          width={70}
+          radius={30}
+          colorMode="dark"
+          backgroundColor="#313131"
+          show={!city}
+        >
+          <Text className="text-offgray text-xs font-Sora-Regular mb-1">
+            Location
+          </Text>
+        </Skeleton>
         <View className="flex-row space-x-1">
           <Text className="text-offgray text-sm font-Sora-SemiBold capitalize">
             {city ? (
@@ -174,12 +186,14 @@ const headerContent = () => {
               <Skeleton
                 height={18}
                 width={100}
-                radius={3}
+                radius={30}
                 colorMode="dark"
                 backgroundColor="#313131"
                 show={!errorMsg}
               >
-                <Text className="text-white">{errorMsg || "Loading..."}</Text>
+                {errorMsg && (
+                  <Text className="text-white">{errorMsg || "Loading..."}</Text>
+                )}
               </Skeleton>
             )}
           </Text>
