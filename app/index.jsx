@@ -12,7 +12,7 @@ export default function SplashScreen() {
   //     // router.replace("/homestack/home");
   //     // router.replace("/homestack/searchProduct");
   //     // router.replace("/notification");
-  //     // router.replace("/cart");
+  //     // router.replace("/wishlist");
   //   }, 100);
   // }, []);
   const handleOnClick = () => {
@@ -20,7 +20,7 @@ export default function SplashScreen() {
     setTimeout(() => {
       router.replace("/homestack/home");
       setLoader(false);
-    }, 500);
+    }, 200);
   };
   return (
     <>
