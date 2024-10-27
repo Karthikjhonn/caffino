@@ -3,8 +3,14 @@ import React from "react";
 import Entypo from "@expo/vector-icons/Entypo";
 import CartCta from "./CartCta";
 import DeleteCartItem from "./DeleteCartItem";
+import { Swipeable } from "react-native-gesture-handler";
 
-export default function CartCard({ data, calculateTotal, count ,updateCartStatus}) {
+export default function CartCard({
+  data,
+  calculateTotal,
+  count,
+  updateCartStatus,
+}) {
   return (
     <View
       className="border-b border-gray-300 flex-row bg-sky-4 00 shrink"
@@ -18,7 +24,7 @@ export default function CartCard({ data, calculateTotal, count ,updateCartStatus
       </View>
       <View className="grow p-2 py-4 shrink">
         {/* title  */}
-        <DeleteCartItem data={data} updateCartStatus={updateCartStatus}/>
+        <DeleteCartItem data={data} updateCartStatus={updateCartStatus} />
         {/* description  */}
         <Text
           className="capitalize text-xs mt-1 font-Sora-Regular text-black tracking-wide pe-0 -z-10"

@@ -1,5 +1,6 @@
-import { View, Text, Pressable, Modal, Image } from "react-native";
-import React, { useState } from "react";
+import { Pressable, Modal } from "react-native";
+import React from "react";
+import { Easing } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
 import {
   FadeIn,
@@ -15,14 +16,18 @@ const BottomSheet = ({ children, handleModel, modalVisible }) => {
       visible={modalVisible}
       onRequestClose={handleModel}
     >
-      <Animated.View entering={FadeIn} exiting={FadeOut} className="flex-1">
+      <Animated.View
+        entering={FadeIn.duration(100)}
+        exiting={FadeOut.duration(100)}
+        className="flex-1"
+      >
         <Pressable
           className="bg-black/50  flex-1 justify-end"
           onPress={handleModel}
         >
           <Animated.View
-            entering={SlideInDown.duration(250)}
-            exiting={SlideOutDown.duration(250)}
+            entering={SlideInDown.duration(300).easing(Easing.out(Easing.exp))}
+            exiting={SlideOutDown.duration(300).easing(Easing.in(Easing.exp))}
           >
             {children}
           </Animated.View>
