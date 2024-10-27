@@ -34,6 +34,7 @@ export default function notification() {
           indicatorStyle={{ backgroundColor: "#C67C4E" }}
           style={{ backgroundColor: "white", shadowOpacity: 0, elevation: 0 }}
           className="border-t-[0.5px] border-gray-200/75"
+          android_ripple={{ color: "#f3f4f6" }}
           labelStyle={{
             color: "#C67C4E",
             fontFamily: "Sora-Medium",

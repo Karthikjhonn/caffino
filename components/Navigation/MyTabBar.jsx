@@ -1,20 +1,30 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
+import HomeSvg from "../../assets/svg/solid/HomeSvg";
+import HeartSvg from "../../assets/svg/solid/HeartSvg";
+import BagSvg from "../../assets/svg/solid/BagSvg";
+import BellSvg from "../../assets/svg/solid/BellSvg";
+import HomeOtSvg from "../../assets/svg/outline/HomeOtSvg";
+import HeartOtSvg from "../../assets/svg/outline/HeartOtSvg";
+import BagOtSvg from "../../assets/svg/outline/BagOtSvg";
+import BellOtSvg from "../../assets/svg/outline/BellOtSvg";
 
-const solidIcons = {
-  homestack: require(`../../assets/icons/tabbar/solid/home.png`),
-  wishlist: require(`../../assets/icons/tabbar/solid/wishlist.png`),
-  cart: require(`../../assets/icons/tabbar/solid/cart.png`),
-  notification: require(`../../assets/icons/tabbar/solid/notification.png`),
-};
-const outlineIcons = {
-  homestack: require(`../../assets/icons/tabbar/outline/home.png`),
-  wishlist: require(`../../assets/icons/tabbar/outline/wishlist.png`),
-  cart: require(`../../assets/icons/tabbar/outline/cart.png`),
-  notification: require(`../../assets/icons/tabbar/outline/notification.png`),
-};
+const solidIcons = [<HomeSvg />, <HeartSvg />, <BagSvg />, <BellSvg />];
+
+const outlineIcons = [
+  <HomeOtSvg />,
+  <HeartOtSvg />,
+  <BagOtSvg />,
+  <BellOtSvg />,
+];
+
 const themColor = "#c67c4e";
 function MyTabBar({ state, descriptors, navigation }) {
-  const hideTabBarRoutes = ["details", "order","searchProduct","searchDetails"];
+  const hideTabBarRoutes = [
+    "details",
+    "order",
+    "searchProduct",
+    "searchDetails",
+  ];
 
   const currentRoute = state.routes[state.index];
   let currentRouteName = currentRoute.name;
@@ -76,14 +86,15 @@ function MyTabBar({ state, descriptors, navigation }) {
             key={route.key}
             className="h-full flex-1 items-center justify-center"
           >
-            <Image
+            {/* <Image
               source={
                 isFocused ? solidIcons[route.name] : outlineIcons[route.name]
               }
               tintColor={isFocused ? themColor : "#222"}
               className="object-contain w-6 h-6"
-            />
-
+            /> */}
+            {/* <HomeSvg /> */}
+            {isFocused ? solidIcons[index]:outlineIcons[index]}
             <View
               className={`bg-accent w-2.5 h-[5px] rounded-lg mt-1 ${
                 isFocused ? "opacity-100" : "opacity-0"

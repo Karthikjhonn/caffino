@@ -12,6 +12,7 @@ import Feather from "@expo/vector-icons/Feather";
 import Button from "./Button";
 import BottomSheet from "./common/BottomSheet";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
+import DiscountOtSvg from "../assets/svg/outline/DiscountOtSvg";
 export default function Discount() {
   const [modalVisible, setModalVisible] = useState(false);
   const [code, setCode] = useState(null);
@@ -34,16 +35,16 @@ export default function Discount() {
         activeOpacity={0.7}
         className="bg-white min-h-[56px] rounded-2xl border active:bg-gray-50 border-gray-300 flex-row justify-between px-4 items-center"
       >
-        <View className="space-x-4 flex-row items-center">
-          <MaterialIcons name="discount" size={24} color="#c67c4e" />
-          <Text className="font-Sora-SemiBold text-sm tracking-wide text-black">
+        <View className="space-x-3 flex-row items-center">
+          <DiscountOtSvg/>
+          <Text className="font-Sora-Medium text-sm tracking-wide text-black">
             1 Discount is Applies
           </Text>
         </View>
         <View className="flex-row items-center space-x-2">
           {code && (
             <View className="bg-emerald-500  rounded-full w-5 h-5 justify-center items-center">
-              <Text className="font-Sora-SemiBold text-sm tracking-wide   text-white">
+              <Text className="font-Sora-SemiBold text-xs tracking-wide   text-white">
                 1
               </Text>
             </View>

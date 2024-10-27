@@ -6,6 +6,10 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { RadioButton } from "react-native-paper";
 import Loader from "../Loader";
 import BottomSheet from "../common/BottomSheet";
+import WalletSvg from "../../assets/svg/solid/WalletSvg";
+import PayPalSvg from "../../assets/svg/solid/PayPalSvg";
+import GoogleSvg from "../../assets/svg/solid/GoogleSvg";
+import DebitCardSvg from "../../assets/svg/solid/DebitCardSvg";
 const Wallet = ({ placeOrder }) => {
   const [walletType, setWalletType] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
@@ -64,10 +68,9 @@ const Wallet = ({ placeOrder }) => {
               value={value}
             >
               <View className="relative ">
-                <Image
-                  source={require("../../assets/images/wallet/Wallet.png")}
-                  className="w-5 h-5 object-contain absolute top-4 left-0"
-                />
+                <View className="w-5 h-5 object-contain absolute top-4 left-0">
+                  <WalletSvg />
+                </View>
                 <RadioButton.Item
                   label="cash/wallet"
                   value="cash/wallet"
@@ -82,10 +85,9 @@ const Wallet = ({ placeOrder }) => {
               </View>
 
               <View className="relative">
-                <Image
-                  source={require("../../assets/images/wallet/Google Pay India.png")}
-                  className="w-5 h-5 object-contain absolute top-4 left-0"
-                />
+                <View className="w-5 h-5 object-contain absolute top-4 left-0">
+                  <GoogleSvg />
+                </View>
                 <RadioButton.Item
                   label="Google pay/UPI"
                   value="Google pay/UPI"
@@ -99,10 +101,9 @@ const Wallet = ({ placeOrder }) => {
                 />
               </View>
               <View className="relative">
-                <Image
-                  source={require("../../assets/images/wallet/Mastercard Logo.png")}
-                  className="w-5 h-5 object-contain absolute top-4 left-0"
-                />
+                <View className="w-5 h-5 object-contain absolute top-4 left-0">
+                  <DebitCardSvg />
+                </View>
                 <RadioButton.Item
                   label="Debit card"
                   value="Debit card"
@@ -116,10 +117,9 @@ const Wallet = ({ placeOrder }) => {
                 />
               </View>
               <View className="relative">
-                <Image
-                  source={require("../../assets/images/wallet/PayPal.png")}
-                  className="w-5 h-5 object-contain absolute top-4 left-0"
-                />
+                <View className="w-5 h-5 object-contain absolute top-4 left-0">
+                  <PayPalSvg />
+                </View>
                 <RadioButton.Item
                   label="Pay pal"
                   value="pay pal"

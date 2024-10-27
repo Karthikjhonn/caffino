@@ -4,7 +4,7 @@ import {
   ScrollView,
   Image,
   TouchableOpacity,
-  ActivityIndicator,
+  Pressable,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import Button from "../../../components/Button";
@@ -17,6 +17,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getProducts } from "../../../api/ApiIndex";
 import PageLoader from "../../../components/common/PageLoader";
 import ErrorPage from "../../../components/common/ErrorPage";
+import HeartSvg from "../../../assets/svg/solid/HeartSvg";
+import HeartOtSvg from "../../../assets/svg/outline/HeartOtSvg";
+import CoffeeBeanSvg from "../../../assets/svg/solid/CoffeeBeanSvg";
+import MilkSvg from "../../../assets/svg/solid/MilkSvg";
+import BikeSvg from "../../../assets/svg/solid/BikeSvg";
 
 const updateWishlistStatus = async (product) => {
   console.log("product value", product);
@@ -149,22 +154,24 @@ export default function Details() {
         title={"Details"}
         navigation={router.back}
         headerRight={
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={handleWishListStatus}
-            className="w-10 h-10 rounded-full items-center justify-center"
-          >
-            <AntDesign
-              name={wishListStatus?.wishlist ? "heart" : "hearto"}
-              size={22}
-              color={wishListStatus?.wishlist ? "#ed5151" : "#313131"}
-            />
-          </TouchableOpacity>
+          <View className="overflow-hidden rounded-full">
+            <Pressable
+              android_ripple={{ color: "#e5e7eb" }}
+              onPress={handleWishListStatus}
+              className="w-11 h-11  rounded-full items-center justify-center "
+            >
+              {wishListStatus?.wishlist ? (
+                <HeartSvg color="#ef4444" />
+              ) : (
+                <HeartOtSvg />
+              )}
+            </Pressable>
+          </View>
         }
       />
       <ScrollView showsVerticalScrollIndicator={false} className="">
         {/* banner  */}
-        <View className="bg-gray-300  rounded-2xl h-52 m-6">
+        <View className="bg-gray-300  rounded-2xl h-52 m-6 text-red-500">
           <Image
             src={data[0]?.image_url}
             className="w-full h-full object-cover  rounded-2xl"
@@ -206,22 +213,13 @@ export default function Details() {
           </View>
           <View className="mt-3.5 flex-row space-x-2 items-start">
             <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
-              <Image
-                source={require("../../../assets/icons/details/bike.png")}
-                className="object-contain w-5 h-5"
-              />
+              <BikeSvg />
             </View>
             <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
-              <Image
-                source={require("../../../assets/icons/details/bean.png")}
-                className="object-contain w-5 h-5"
-              />
+              <CoffeeBeanSvg />
             </View>
             <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
-              <Image
-                source={require("../../../assets/icons/details/pack.png")}
-                className="object-contain w-5 h-5"
-              />
+              <MilkSvg />
             </View>
           </View>
           <View className="w-[92%] mx-auto my-4 h-px bg-offgray"></View>
