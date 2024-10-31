@@ -5,6 +5,8 @@ import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import data from "../../data.json";
 import { useFocusEffect } from "@react-navigation/native";
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 const getProductDetails = async () => {
   try {
     const productDetails = await AsyncStorage.getItem("productDetails");
@@ -92,7 +94,10 @@ export default function wishlist() {
 
 const EmptyWishlist = () => {
   return (
-    <View className="flex-1 justify-center items-center ">
+    <Animated.View
+      entering={FadeInDown.delay(300).duration(300)}
+      className="flex-1 justify-center items-center "
+    >
       <Image
         source={require("../../assets/images/Sign Board Floating With Chain 3D Model.png")}
         className="object-contain w-20 h-20"
@@ -101,10 +106,12 @@ const EmptyWishlist = () => {
         source={require("../../assets/images/Ellipse1.png")}
         className="object-contain   -z-10 -translate-y-4"
       />
-      <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-2">
-        Your wishlist needs a little caffeine! Explore our blends and add your
-        top picks. 🌿
-      </Text>
-    </View>
+      <Animated.View entering={FadeInDown.delay(350).duration(300)}>
+        <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-2">
+          Your wishlist needs a little caffeine! Explore our blends and add your
+          top picks. 🌿
+        </Text>
+      </Animated.View>
+    </Animated.View>
   );
 };

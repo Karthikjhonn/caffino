@@ -18,6 +18,12 @@ import Wallet from "../../../components/wallet/Wallet";
 import { getProducts } from "../../../api/ApiIndex";
 import ErrorPage from "../../../components/common/ErrorPage";
 import PageLoader from "../../../components/common/PageLoader";
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
+import DeliveryOt from "../../../assets/svg/outline/DeliveryOt";
+import Delivery from "../../../assets/svg/solid/Delivery";
+import PackUpOt from "../../../assets/svg/outline/PackUpOt";
+import PackUp from "../../../assets/svg/solid/PackUp";
 const getProductDetails = async () => {
   try {
     const productDetails = await AsyncStorage.getItem("productDetails");
@@ -61,7 +67,7 @@ export default function Order() {
   };
   useEffect(() => {
     getWishlistDetails();
-    getAllProduct()
+    getAllProduct();
   }, []);
   const getAllProduct = async () => {
     try {
@@ -92,62 +98,76 @@ export default function Order() {
       setTotal((prevTotal) => prevTotal - total);
     }
   }
-const getOrderDetails = ()=>{
-  const payload ={
-    TotalAmount:total,
-    orderType:orderType,
-    quantity:2,
-    productId:[1,5],
-    dAddress:"chennai"
-  }
-  console.log(payload);
-  
-}
+  const getOrderDetails = () => {
+    const payload = {
+      TotalAmount: total,
+      orderType: orderType,
+      quantity: 2,
+      productId: [1, 5],
+      dAddress: "chennai",
+    };
+    console.log(payload);
+  };
   return (
     <View className="flex-1 bg-background">
       <CustomHeader title={"Order"} navigation={router.back} />
       <ScrollView showsVerticalScrollIndicator={false} className="">
-        <View className="px-6 mt-6">
-          <View className="bg-gray-200 p-1 flex-row space-x-1 rounded-lg min-h-[44px]">
+        <Animated.View
+          entering={FadeInDown.delay(200).duration(300)}
+          className="px-6 mt-6"
+        >
+          <View className="bg-gray-200 p-1 flex-row space-x-1 rounded-xl min-h-[44px]">
             <TouchableOpacity
               onPress={() => setOrderType(1)}
               activeOpacity={0.7}
-              className={` bg-transparent text-black rounded-lg justify-center grow min-h-[35px] ${
+              className={` bg-transparent text-black rounded-lg justify-center grow min-h-[40px] ${
                 orderType === 1 ? "bg-accent" : null
               }`}
             >
-              <Text
-                className={`text-black text-base font-Sora-Regular text-center ${
-                  orderType === 1 ? "text-white font-Sora-SemiBold" : null
-                }`}
-              >
-                Deliver
-              </Text>
+              <View className="flex-row space-x-2 items-center mx-auto">
+                <Text
+                  className={`text-black text-base font-Sora-Regular text-center ${
+                    orderType === 1 ? "text-white font-Sora-SemiBold" : null
+                  }`}
+                >
+                  Deliver
+                </Text>
+                {orderType === 1 ? <Delivery /> : <DeliveryOt />}
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setOrderType(2)}
               activeOpacity={0.7}
-              className={`bg-transparent text-black rounded-lg justify-center grow min-h-[35px] ${
+              className={`bg-transparent text-black rounded-lg justify-center grow min-h-[40px] ${
                 orderType === 2 ? "bg-accent" : null
               }`}
             >
-              <Text
-                className={`text-black text-base font-Sora-Regular text-center ${
-                  orderType === 2 ? "text-white font-Sora-SemiBold" : null
-                }`}
-              >
-                Pick Up
-              </Text>
+              <View className="flex-row space-x-2 items-center mx-auto">
+                <Text
+                  className={`text-black text-base font-Sora-Regular text-center ${
+                    orderType === 2 ? "text-white font-Sora-SemiBold" : null
+                  }`}
+                >
+                  Pick Up
+                </Text>
+                {orderType === 2 ? <PackUp /> : <PackUpOt />}
+              </View>
             </TouchableOpacity>
           </View>
-        </View>
+        </Animated.View>
         {/* delivery address  */}
-        <View className="px-6 mt-6">
+        <Animated.View
+          entering={FadeInDown.delay(250).duration(300)}
+          className="px-6 mt-6"
+        >
           <DeliveryAddress />
-        </View>
+        </Animated.View>
         {/* add to cart card  */}
         {wishlistItem ? (
-          <View className="px-6">
+          <Animated.View
+            entering={FadeInDown.delay(300).duration(200)}
+            className="px-6"
+          >
             {cartProductData?.map((data, i) => (
               <AddToCartCard
                 data={data}
@@ -156,9 +176,12 @@ const getOrderDetails = ()=>{
                 count={cartData}
               />
             ))}
-          </View>
+          </Animated.View>
         ) : (
-          <View className="px-6">
+          <Animated.View
+            entering={FadeInDown.delay(300).duration(300)}
+            className="px-6"
+          >
             {data?.map((data, i) => (
               <AddToCartCard
                 data={data}
@@ -167,12 +190,15 @@ const getOrderDetails = ()=>{
                 count={cartData[i]}
               />
             ))}
-          </View>
+          </Animated.View>
         )}
 
         <View className="w-full h-1 bg-secondary my-4"></View>
         {/* discount and payment summary  */}
-        <View className="px-6 my-6 mb-10">
+        <Animated.View
+          entering={FadeInDown.delay(300).duration(300)}
+          className="px-6 my-6 mb-10"
+        >
           <Discount />
           <View className="mt-6">
             <Text className="font-Sora-SemiBold text-base text-black mb-4">
@@ -205,12 +231,15 @@ const getOrderDetails = ()=>{
               </View>
             </View>
           </View>
-        </View>
+        </Animated.View>
       </ScrollView>
       {/* bottom sticky */}
-      <View className="bg-white px-6 py-6  min-h-[108px]  rounded-t-2xl">
-        <Wallet  placeOrder={getOrderDetails}/>
-      </View>
+      <Animated.View
+        entering={FadeInDown.delay(250).duration(300)}
+        className="bg-white px-6 py-6  min-h-[108px]  rounded-t-2xl"
+      >
+        <Wallet placeOrder={getOrderDetails} />
+      </Animated.View>
     </View>
   );
 }

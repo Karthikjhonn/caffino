@@ -24,6 +24,7 @@ function MyTabBar({ state, descriptors, navigation }) {
     "order",
     "searchProduct",
     "searchDetails",
+    
   ];
 
   const currentRoute = state.routes[state.index];
@@ -75,6 +76,9 @@ function MyTabBar({ state, descriptors, navigation }) {
         };
         // console.log(route);
         // console.log(route.name);
+        if(route.name == "test"){
+          return null
+        }
         return (
           <TouchableOpacity
             accessibilityRole="button"
@@ -86,14 +90,7 @@ function MyTabBar({ state, descriptors, navigation }) {
             key={route.key}
             className="h-full flex-1 items-center justify-center"
           >
-            {/* <Image
-              source={
-                isFocused ? solidIcons[route.name] : outlineIcons[route.name]
-              }
-              tintColor={isFocused ? themColor : "#222"}
-              className="object-contain w-6 h-6"
-            /> */}
-            {/* <HomeSvg /> */}
+           
             {isFocused ? solidIcons[index]:outlineIcons[index]}
             <View
               className={`bg-accent w-2.5 h-[5px] rounded-lg mt-1 ${

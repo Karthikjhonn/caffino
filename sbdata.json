@@ -1,0 +1,469 @@
+[
+    {
+      "_id": "6681b8d94507f78afe80183b",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Caffè Mocha",
+      "image": "https://athome.starbucks.com/sites/default/files/2021-06/1_CAH_CaffeMocha_Hdr_2880x16602.jpg",
+      "description": "This Starbucks classic combines espresso, bittersweet mocha sauce and steamed milk for a sweetly satisfying coffee. Top it off with whipped cream and chocolate shavings for a delicious mug of coffee ready to be enjoyed any time at home.",
+      "recipeYield": "1 serving",
+      "datePublished": "Wed, 06/02/2021 - 13:58",
+      "prepTime": "PT7M",
+      "totalTime": "PT7M",
+      "recipeIngredient": [
+        "1 oz Starbucks® Espresso Roast ground coffee or",
+        "1 cup milk of your choice",
+        "3 Tbsp mocha sauce",
+        "",
+        ""
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Prepare 1 shot of espresso and pour into a mug.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Froth your milk using your preferred method. For more information on how to froth your milk, see our frothing guide here.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Add mocha sauce into your mug and gently stir into the coffee.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Gently pour your frothed milk into your mug until it’s almost full.",
+          "image": ""
+        }
+      ],
+      "category": "HOT BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe80183e",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "White Chocolate Mocha​",
+      "image": "https://athome.starbucks.com/sites/default/files/2022-05/1_CAH_WhiteChocolateMocha_Hdr_2880x1660_0.jpg",
+      "description": "Espresso meets white chocolate in this classic Starbucks® drink. Learn how to make a White Chocolate Mocha at home, then top it off with a dollop of whipped cream for a sweet, creamy beverage that delights with every sip.",
+      "recipeYield": "1 serving",
+      "datePublished": "Mon, 07/05/2021 - 07:29",
+      "prepTime": "PT3M",
+      "totalTime": "PT3M",
+      "recipeIngredient": [
+        "4 Tbsp white chocolate chips or chopped white chocolate",
+        "1 shot Starbucks® Espresso Roast",
+        "1 cup 2% milk",
+        ""
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Heat up white chocolate chips on low heat until softened.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Prepare 1 shot of espresso and pour into a mug (1 shot = 1 oz).",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-08/WhiteChocolateMochaStep2.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Stir hot espresso and softened white chocolate together.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Froth 2% milk using your preferred method. For more information on how to froth your milk, see our frothing guide here.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "05",
+          "text": "Pour frothed milk into mug.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-08/WhiteChocolateMochaStep5.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "06",
+          "text": "Top with whipped cream.",
+          "image": ""
+        }
+      ],
+      "category": "HOT BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe80184d",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Iced Cinnamon Dolce Mocha With Cinnamon Oatmilk Cold Foam",
+      "image": "https://athome.starbucks.com/sites/default/files/2023-07/CinnamonDolceLatte_Web_Header_2880x1660.jpg",
+      "description": "Chocolate syrup, cinnamon syrup and creamy oatmilk cold foam come together with Starbucks® Cinnamon Dolce Naturally Flavored Coffee for a drink that’s equal parts rich and refreshing. Take a moment for yourself and chill out with an Iced Cinnamon Dolce Mocha with Cinnamon Oatmilk Cold Foam. ​",
+      "recipeYield": "1 serving",
+      "datePublished": "Tue, 07/11/2023 - 15:48",
+      "prepTime": "PT20M",
+      "totalTime": "PT20M",
+      "recipeIngredient": [
+        "2 Tbsp chocolate syrup​",
+        "8 oz Starbucks® Cinnamon Dolce Naturally Flavored Coffee, brewed and cooled",
+        "1 cup ice",
+        "0.25 cup of extra creamy oatmilk​",
+        "2 Tbsp homemade Cinnamon Dolce Syrup (or storebought)",
+        "Ground cinnamon, cinnamon stick, cocoa, or chocolate shavings for garnish (optional)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Pour chocolate syrup into a 16-oz glass.​",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Add cooled Starbucks® Cinnamon Dolce to the glass. Stir.​",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Fill the cup with ice to ½ inch below the rim.​",
+          "image": "https://athome.starbucks.com/sites/default/files/2023-07/CinnamonDolceLatte_Web_RecipeStep_1740x1050_2.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Froth oatmilk and cinnamon syrup using your preferred cold method. You can use a handheld frother or froth the oatmilk by hand. For more information on how to froth milk or milk alternatives, see our frothing guide here.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "05",
+          "text": "Fill the glass to the rim with the cinnamon oatmilk cold foam.",
+          "image": "https://athome.starbucks.com/sites/default/files/2023-07/CinnamonDolceLatte_Web_RecipeStep_1740x1050_3.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "06",
+          "text": "Garnish with a sprinkle of cocoa or ground cinnamon, a cinnamon stick or chocolate shavings.",
+          "image": ""
+        }
+      ],
+      "category": "ICED BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe80185f",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Salted Caramel Mocha​",
+      "image": "https://athome.starbucks.com/sites/default/files/2022-05/1_CAH_SaltedCaramelMocha_Hdr_2880x1660_0.jpg",
+      "description": "Sea salt, whipped cream and caramel flavors meet in your mug for this delicious drink. With one sip, it’s easy to see why Starbucks® Salted Caramel Mocha is a café favorite. Learn how to make this sweet, salty, delicious drink at home with this recipe.",
+      "recipeYield": "1 serving",
+      "datePublished": "Thu, 07/01/2021 - 09:19",
+      "prepTime": "PT4M",
+      "totalTime": "PT4M",
+      "recipeIngredient": [
+        "1.5 Tbsp toffee nut syrup",
+        "3 Tbsp dark chocolate sauce/syrup",
+        "1 shot Starbucks® Espresso Roast",
+        "1 cup 2% milk",
+        "",
+        "homemade Caramel Sauce (or storebought) for garnish"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Add toffee nut syrup and dark chocolate sauce into the mug.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-07/SaltedCaramelMocha_Step1.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Prepare shot of espresso.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-07/SaltedCaramelMocha_Step2.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Stir hot espresso into chocolate and toffee nut flavorings.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Froth 2% milk using your preferred method. For more information on how to froth your milk, see our frothing guide here.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "05",
+          "text": "Pour frothed milk into your mug.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "06",
+          "text": "Top with whipped cream, drizzle of caramel sauce and sprinkle of smoked sea salt and sugar topping.",
+          "image": ""
+        }
+      ],
+      "category": "HOT BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe801870",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Mocha Frozen Blended Coffee​",
+      "image": "https://athome.starbucks.com/sites/default/files/2022-05/1_CAH_MochaFrozenBlendedCoffee_Hdr_2880x1660_0.jpg",
+      "description": "The Mocha Frozen Blended Coffee, where coffee, milk, ice and chocolaty goodness all come together for a delicious cold drink. Inspired by the café favorite Starbucks® Frappuccino® Blended Beverage, this recipe is perfect whenever you're in need of a sweet pick-me-up. Top it off with whipped cream and chocolate shavings for a sweet ending that’s deliciously Starbucks.",
+      "recipeYield": "1 serving",
+      "datePublished": "Thu, 07/01/2021 - 12:06",
+      "prepTime": "PT4M",
+      "totalTime": "PT4M",
+      "recipeIngredient": [
+        "1 shot Starbucks® Espresso Roast",
+        "1.5 cups ice",
+        "0.75 cup whole milk",
+        "2 Tbsp dark chocolate sauce/syrup",
+        "",
+        ""
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Prepare 1 shot of espresso.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-07/MochaFrozenBlendedCoffee%E2%80%8B_Step1.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Place ice, milk, chocolate sauce and espresso into a blender. Start at low speed, then blend on high for 30 seconds.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-07/MochaFrozenBlendedCoffee%E2%80%8B_Step2.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Pour blended mixture into 16-oz glass.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Top with whipped cream and chocolate shavings.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-07/MochaFrozenBlendedCoffee%E2%80%8B_Step4.jpg"
+        }
+      ],
+      "category": "ICED BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe801877",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Hazelnut Mocha au Lait",
+      "image": "https://athome.starbucks.com/sites/default/files/2022-01/CAH_Hazelnutmocha_Header_2880x1660_0.jpg",
+      "description": "Rich chocolate and nutty flavors in every sip. Learn how to make this warming Hazelnut Mocha au Lait at home with Starbucks® Mocha Flavored Coffee.",
+      "recipeYield": "1 serving",
+      "datePublished": "Wed, 01/05/2022 - 21:19",
+      "prepTime": "PT3M",
+      "totalTime": "PT3M",
+      "recipeIngredient": [
+        "2 Tbsp homemade Hazelnut Syrup (or storebought)",
+        "8 oz Starbucks® Mocha Flavored Coffee",
+        "4 oz whole milk",
+        "0.25 cup whipped cream",
+        "1 Tbsp chocolate syrup + 1 tsp for garnish"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Pour Hazelnut Syrup into a mug and add brewed Starbucks® Mocha Flavored Coffee. Stir.",
+          "image": "https://athome.starbucks.com/sites/default/files/2023-01/CAH_HazelnutMocha_step_1740x1050.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Froth milk and pour over the coffee. Discover your preferred frothing method by visiting our milk frothing guide.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Top with whipped cream and drizzle with chocolate syrup.",
+          "image": ""
+        }
+      ],
+      "category": "HOT BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe801883",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Orange Mocha​",
+      "image": "https://athome.starbucks.com/sites/default/files/2021-07/OrangeMocha_overview_0.jpg",
+      "description": "Enjoy the best of both worlds with this unforgettable beverage, where espresso swirls together with the classic combination of chocolate flavor and orange zest.",
+      "recipeYield": "1 serving",
+      "datePublished": "Fri, 07/02/2021 - 13:45",
+      "prepTime": "PT10M",
+      "totalTime": "PT10M",
+      "recipeIngredient": [
+        "1 cup milk of choice",
+        "2 Tbsp mocha sauce",
+        "1 Tbsp brown sugar",
+        "4 oz hot espresso",
+        "0.5 cup heavy whipping cream",
+        "1 Tbsp sugar",
+        ""
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Over medium heat, add milk to your saucepan and bring to a simmer.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-07/OrangeMocha_featuredImage.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Add in mocha sauce, brown sugar and orange zest; whisk briskly to create a layer of foam.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Pour milk mixture into espresso; separating and discarding the orange zest.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Prepare espresso and pour into the center of your mug.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "05",
+          "text": "Top with whipped cream and fresh orange zest.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "06",
+          "text": "Prepare espresso and pour into mug.",
+          "image": ""
+        }
+      ],
+      "category": "HOT BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe8018a8",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Iced Mocha",
+      "image": "https://athome.starbucks.com/sites/default/files/2023-11/INNV00016802_MEDIUM_MOCHA_HDR_2880x1660_SI_0.jpg",
+      "description": "Refreshing, decadent and ready in a matter of minutes. It's easier than ever to make a classic iced mocha at home with Starbucks® Premium Instant Coffee.",
+      "recipeYield": "1 serving",
+      "datePublished": "Fri, 12/16/2022 - 20:27",
+      "prepTime": "PT3M",
+      "totalTime": "PT3M",
+      "recipeIngredient": [
+        "2 tsp Starbucks® Premium Instant Coffee",
+        "4 oz cool water",
+        "0.75 cup ice",
+        "4 oz whole milk or any non-dairy alternative",
+        "",
+        "Whipped cream and chocolate syrup or shavings (optional)"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Combine Starbucks® Premium Instant Coffee and cool water in a glass.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Fill with ice.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Combine whole milk and chocolate syrup in a separate glass. Stir together then combine with the first glass.",
+          "image": "https://athome.starbucks.com/sites/default/files/2022-12/22_SBX_COLD%20INNOVATIONS_CAH_ICED%20MOCHA_STEP.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Top with whipped cream and chocolate syrup or shavings to taste, and enjoy.",
+          "image": ""
+        }
+      ],
+      "category": "ICED BEVERAGES"
+    },
+    {
+      "_id": "6681b8d94507f78afe8018b2",
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": "Muddled Mint White Chocolate Mocha",
+      "image": "https://athome.starbucks.com/sites/default/files/2021-06/1_CAH_MuddledMindWhiteChocolateMocha_Hdr_2880x1660_0.jpg",
+      "description": "Treat your taste buds with this warm and white chocolaty drink. This muddled minty mocha is a rich and luscious way to satiate your sweet tooth and revel in a delightfully minty finish.",
+      "recipeYield": "1 serving",
+      "datePublished": "Thu, 06/03/2021 - 06:57",
+      "prepTime": "PT10M",
+      "totalTime": "PT10M",
+      "recipeIngredient": [
+        "0.3 Starbucks® Mocha Flavored Ground Coffee",
+        "2 Tbsp white chocolate mocha sauce",
+        "",
+        "",
+        ""
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "01",
+          "text": "Brew Starbucks® Mocha Flavored Ground Coffee (or K-Cup® pods) double-strength.",
+          "image": "https://athome.starbucks.com/sites/default/files/2021-06/MuddledMindWhiteChocolateMocha_Ingredients_0.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "02",
+          "text": "Add white chocolate mocha sauce to your cup.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "03",
+          "text": "Add hot coffee to cup, pouring directly over white chocolate sauce.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "04",
+          "text": "Stir vigorously to dissolve. In a separate glass, muddle fresh mint and ice.",
+          "image": ""
+        },
+        {
+          "@type": "HowToStep",
+          "name": "05",
+          "text": "Pour coffee mixture on top of the fresh mint and ice. Top with whipped cream and a sprig of fresh mint.",
+          "image": ""
+        }
+      ],
+      "category": "HOT BEVERAGES"
+    }
+  ]

@@ -22,6 +22,8 @@ import HeartOtSvg from "../../../assets/svg/outline/HeartOtSvg";
 import CoffeeBeanSvg from "../../../assets/svg/solid/CoffeeBeanSvg";
 import MilkSvg from "../../../assets/svg/solid/MilkSvg";
 import BikeSvg from "../../../assets/svg/solid/BikeSvg";
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 
 const updateWishlistStatus = async (product) => {
   console.log("product value", product);
@@ -171,16 +173,22 @@ export default function Details() {
       />
       <ScrollView showsVerticalScrollIndicator={false} className="">
         {/* banner  */}
-        <View className="bg-gray-300  rounded-2xl h-52 m-6 text-red-500">
+        <Animated.View
+          entering={FadeInDown.delay(200).duration(200)}
+          className="bg-gray-300  rounded-2xl h-52 m-6 text-red-500"
+        >
           <Image
             src={data[0]?.image_url}
             className="w-full h-full object-cover  rounded-2xl"
           />
-        </View>
+        </Animated.View>
         {/* product name & details  */}
         <View className="px-6">
           <View className="flex-row space-x-2 ">
-            <View className="shrink grow">
+            <Animated.View
+              entering={FadeInDown.delay(250).duration(300)}
+              className="shrink grow"
+            >
               <Text
                 className="capitalize text-xl font-Sora-SemiBold text-black tracking-wide mb-1 pe-0"
                 numberOfLines={2}
@@ -198,8 +206,11 @@ export default function Details() {
                   {data[0]?.weight}g
                 </Text>
               </View>
-            </View>
-            <View className="mt-0">
+            </Animated.View>
+            <Animated.View
+              entering={FadeInDown.delay(300).duration(300)}
+              className="mt-0"
+            >
               <View className="flex-row min-w-min items-center">
                 <AntDesign name="star" size={20} color="#FBBE21" />
                 <Text className="font-Sora-SemiBold text-base text-black mx-1">
@@ -209,23 +220,38 @@ export default function Details() {
                   (458)
                 </Text>
               </View>
-            </View>
+            </Animated.View>
           </View>
           <View className="mt-3.5 flex-row space-x-2 items-start">
-            <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
+            <Animated.View
+              entering={FadeInDown.delay(350).duration(300)}
+              className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center"
+            >
               <BikeSvg />
-            </View>
-            <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
+            </Animated.View>
+            <Animated.View
+              entering={FadeInDown.delay(400).duration(300)}
+              className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center"
+            >
               <CoffeeBeanSvg />
-            </View>
-            <View className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center">
+            </Animated.View>
+            <Animated.View
+              entering={FadeInDown.delay(450).duration(300)}
+              className="w-11 h-11 bg-gray-200/50 rounded-xl justify-center items-center"
+            >
               <MilkSvg />
-            </View>
+            </Animated.View>
           </View>
-          <View className="w-[92%] mx-auto my-4 h-px bg-offgray"></View>
+          <Animated.View
+            entering={FadeInDown.delay(500).duration(300)}
+            className="w-[92%] mx-auto my-4 h-px bg-offgray"
+          ></Animated.View>
         </View>
         {/* Description */}
-        <View className="px-6">
+        <Animated.View
+          entering={FadeInDown.delay(500).duration(300)}
+          className="px-6"
+        >
           <Text className="text-base font-Sora-SemiBold text-black mb-2">
             Description
           </Text>
@@ -247,13 +273,19 @@ export default function Details() {
               </Text>
             </TouchableOpacity>
           ) : null}
-        </View>
+        </Animated.View>
         {/* size  */}
         <View className="px-6 mt-6">
-          <Text className="text-base font-Sora-SemiBold text-black mb-2">
-            Size
-          </Text>
-          <View className="mt-2 flex-row space-x-3">
+          <Animated.View entering={FadeIn.delay(500).duration(300 )}>
+            <Text className="text-base font-Sora-SemiBold text-black mb-2">
+              Size
+            </Text>
+          </Animated.View>
+
+          <Animated.View
+            entering={FadeInDown.delay(550).duration(300)}
+            className="mt-2 flex-row space-x-3"
+          >
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => setSize("S")}
@@ -287,10 +319,13 @@ export default function Details() {
             >
               <Text className="font-Sora-Regular text-sm text-black">L</Text>
             </TouchableOpacity>
-          </View>
+          </Animated.View>
         </View>
         {/* grind options  */}
-        <View className="px-6 mt-6">
+        <Animated.View
+          entering={FadeInDown.delay(580).duration(300)}
+          className="px-6 mt-6"
+        >
           <Text className="text-base font-Sora-SemiBold text-black mb-2 capitalize">
             grind option
           </Text>
@@ -305,26 +340,29 @@ export default function Details() {
               </Text>
             ))}
           </View>
-        </View>
+        </Animated.View>
         <View className="my-4"></View>
       </ScrollView>
       {/* bottom sticky */}
       <View className="bg-white px-6 min-h-[108px] flex-row items-center mt-auto space-x-10">
-        <View>
+        <Animated.View entering={FadeInDown.delay(300).duration(300)}>
           <Text className="text-sm font-Sora-Regular text-gray-400 capitalize tracking-wider">
             price
           </Text>
           <Text className="text-xl font-Sora-SemiBold text-accent">
             $ {data[0]?.price}
           </Text>
-        </View>
-        <View className="grow">
+        </Animated.View>
+        <Animated.View
+          entering={FadeInDown.delay(320).duration(300)}
+          className="grow"
+        >
           <Button
             title={loader ? <Loader /> : "Buy Now"}
             style={"my-auto"}
             onPress={handleOrder}
           />
-        </View>
+        </Animated.View>
       </View>
       <StatusBar style="dark" />
     </View>

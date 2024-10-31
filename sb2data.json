@@ -1,0 +1,165 @@
+[
+    {
+        "id": "1",
+        "title": "Raspberry and custard muffins",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/1.jpg"
+    },
+    {
+        "id": "2",
+        "title": "Lemon and blackberry stripe cake",
+        "difficulty": "A challenge",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/2.jpg"
+    },
+    {
+        "id": "3",
+        "title": "Paul Hollywood’s chocolate fudge cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/3.jpg"
+    },
+    {
+        "id": "4",
+        "title": "Lemon and strawberry meringue cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/4.jpg"
+    },
+    {
+        "id": "5",
+        "title": "Vegan chocolate cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/5.jpg"
+    },
+    {
+        "id": "6",
+        "title": "Spiced plum cake with swiss meringue frosting",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/6.jpg"
+    },
+    {
+        "id": "7",
+        "title": "Lemon and courgette cake with white chocolate cream cheese frosting",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/7.jpg"
+    },
+    {
+        "id": "8",
+        "title": "Chocolate cake with caramel poached pears and chocolate buttercream",
+        "difficulty": "Medium",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/8.jpg"
+    },
+    {
+        "id": "9",
+        "title": "Rhubarb and custard layer cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/9.jpg"
+    },
+    {
+        "id": "10",
+        "title": "Spring lamb cupcakes",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/10.jpg"
+    },
+    {
+        "id": "11",
+        "title": "Peanut butter drip cake",
+        "difficulty": "Medium",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/11.jpg"
+    },
+    {
+        "id": "12",
+        "title": "Ginger drizzle traybake with cream cheese icing",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/12.jpg"
+    },
+    {
+        "id": "13",
+        "title": "Baked lemon cheesecake with pineapple flowers",
+        "difficulty": "Medium",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/13.jpg"
+    },
+    {
+        "id": "14",
+        "title": "Carrot and cheesecake layer cake",
+        "difficulty": "A challenge",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/14.jpg"
+    },
+
+    {
+        "id": "16",
+        "title": "Summer-cup bundt drizzle cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/16.jpg"
+    },
+    {
+        "id": "17",
+        "title": "St Clement’s squares",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/17.jpg"
+    },
+    {
+        "id": "18",
+        "title": "Caramelised white chocolate, burnt butter and tahini cake",
+        "difficulty": "A challenge",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/18.jpg"
+    },
+    {
+        "id": "19",
+        "title": "Eric Lanlard’s carrot and pumpkin celebration cake",
+        "difficulty": "Medium",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/19.jpg"
+    },
+    {
+        "id": "20",
+        "title": "Tunnock’s teacake traybake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/20.jpg"
+    },
+    {
+        "id": "21",
+        "title": "Easy butterfly cakes",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/21.jpg"
+    },
+    {
+        "id": "22",
+        "title": "Chocolate cupcakes",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/22.jpg"
+    },
+    {
+        "id": "23",
+        "title": "Orange blossom, lemon thyme and almond cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/23.jpg"
+    },
+    {
+        "id": "24",
+        "title": "Eton mess traybake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/24.jpg"
+    },
+    {
+        "id": "25",
+        "title": "Nut-free carrot cupcakes",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/25.jpg"
+    },
+    {
+        "id": "26",
+        "title": "Raspberry and lemon sponge cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/26.jpg"
+    },
+    {
+        "id": "27",
+        "title": "Strawberry and rose victoria sponge sandwich",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/27.jpg"
+    },
+    {
+        "id": "28",
+        "title": "Toffee ice-cream cake",
+        "difficulty": "Easy",
+        "image": "https://apipics.s3.amazonaws.com/cakes_api/28.jpg"
+    }
+]
