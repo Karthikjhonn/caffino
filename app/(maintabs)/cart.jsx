@@ -5,6 +5,8 @@ import CartCard from "../../components/cart/CartCard";
 import productData from "../../data.json";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router, useFocusEffect } from "expo-router";
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 const getProductDetails = async () => {
   try {
     const productDetails = await AsyncStorage.getItem("productDetails");
@@ -123,9 +125,11 @@ export default function cart() {
             count={cartData[i]}
             updateCartStatus={updateCartStatus}
           />
-          // <Text key={i}>hello</Text>
         ))}
-        <View className="mt-6 px-5">
+        <Animated.View
+          entering={FadeInDown.delay(300).duration(300)}
+          className="mt-6 px-5"
+        >
           <Text className="font-Sora-SemiBold text-base text-black mb-4">
             Payment Summary
           </Text>
@@ -152,14 +156,17 @@ export default function cart() {
               </View>
             </View>
           </View>
-        </View>
-        <View className="px-6 mb-16 py-6 mt-auto">
+        </Animated.View>
+        <Animated.View
+          entering={FadeInDown.delay(350).duration(300)}
+          className="px-6 mb-16 py-6 mt-auto"
+        >
           <Button
             title="Proceed to checkout"
             style={"mt-0"}
             onPress={proceedCheckout}
           />
-        </View>
+        </Animated.View>
       </ScrollView>
     </View>
   );
@@ -167,7 +174,10 @@ export default function cart() {
 
 const EmptyWishlist = () => {
   return (
-    <View className="flex-1 justify-center items-center ">
+    <Animated.View
+      entering={FadeInDown.delay(300).duration(300)}
+      className="flex-1 justify-center items-center "
+    >
       <Image
         source={require("../../assets/images/Big Craft Paper Bag With Rope Handles 3D Model.png")}
         className="object-contain w-24 h-24"
@@ -176,10 +186,12 @@ const EmptyWishlist = () => {
         source={require("../../assets/images/Ellipse1.png")}
         className="object-contain -z-10 -translate-y-9"
       />
-      <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-7">
-        Your cart is empty—time to fill it with your favorite beans and brews!
-        ☕
-      </Text>
-    </View>
+      <Animated.View entering={FadeInDown.delay(350).duration(300)}>
+        <Text className="font-Sora-Light text-center text-sm text-black z-10 max-w-xs -translate-y-7">
+          Your cart is empty—time to fill it with your favorite beans and brews!
+          ☕
+        </Text>
+      </Animated.View>
+    </Animated.View>
   );
 };

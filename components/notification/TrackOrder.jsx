@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 const TrackOrder = ({ data }) => {
 
   return (
-    <View className="border border-gray-200 rounded-2xl bg-white  overflow-hidden mb-6">
+    <Animated.View
+    entering={FadeInDown.delay(300).duration(300)} className="border border-gray-200 rounded-2xl bg-white  overflow-hidden mb-6">
       <View className="p-2 flex-row space-x-2">
         <View className="bg-gray-100 w-24 h-24 rounded-lg">
           <Image
@@ -103,7 +106,7 @@ const TrackOrder = ({ data }) => {
           </View>
         </View>
       </View>
-    </View>
+    </Animated.View>
   );
 };
 

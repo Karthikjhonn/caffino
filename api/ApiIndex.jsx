@@ -7,3 +7,7 @@ export const getProducts = (id) => {
     return GET(`https://fake-coffee-api.vercel.app/api/`);
   }
 };
+
+export const sampleApis = () => {
+  return GET("https://api.sampleapis.com/coffee/hot");
+};

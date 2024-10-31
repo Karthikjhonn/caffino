@@ -4,7 +4,8 @@ import Entypo from "@expo/vector-icons/Entypo";
 import CartCta from "./CartCta";
 import DeleteCartItem from "./DeleteCartItem";
 import { Swipeable } from "react-native-gesture-handler";
-
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 export default function CartCard({
   data,
   calculateTotal,
@@ -12,7 +13,7 @@ export default function CartCard({
   updateCartStatus,
 }) {
   return (
-    <View
+    <Animated.View entering={FadeInDown.delay(200).duration(300)}
       className="border-b border-gray-300 flex-row bg-sky-4 00 shrink"
       key={data?.id}
     >
@@ -75,6 +76,6 @@ export default function CartCard({
           countDetails={count}
         />
       </View>
-    </View>
+    </Animated.View>
   );
 }

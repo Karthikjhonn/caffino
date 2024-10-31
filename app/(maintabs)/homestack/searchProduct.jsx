@@ -14,6 +14,8 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Searchbar } from "react-native-paper";
 import data from "../../../data.json";
+import sbData from "../../../sbdata.json";
+import sb2Data from "../../../sb2data.json";
 function detailScreen(id = null) {
   router.push({
     pathname: "/homestack/details",
@@ -115,13 +117,13 @@ const searchProduct = () => {
               Recent search
             </Text>
             <FlatList
-              data={topTrendingData}
+              data={sb2Data}
               horizontal
               keyExtractor={(item, i) => i}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 16 }}
               style={{}}
-              renderItem={({ item }) => <SmallCard />}
+              renderItem={({ item }) => <SmallCard data={item} />}
               ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
             />
           </>
@@ -132,13 +134,13 @@ const searchProduct = () => {
               Related products
             </Text>
             <FlatList
-              data={topTrendingData}
+              data={sbData}
               horizontal
               keyExtractor={(item, i) => i}
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 16 }}
               style={{}}
-              renderItem={({ item }) => <SmallCardRelated />}
+              renderItem={({ item }) => <SmallCardRelated data={item} />}
               ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
             />
           </>
@@ -151,29 +153,42 @@ const searchProduct = () => {
 
 export default searchProduct;
 
-const SmallCard = () => {
+const SmallCard = ({ data }) => {
   return (
     <Pressable
-      className="w-36 h-44 bg-neutral-200 "
+      className="w-36  bg-white "
       onPress={() => searchDetailScreen("recent search")}
+      android_ripple={{color:"#cecece"}}
     >
       <Image
-        src="https://img.freepik.com/free-photo/fresh-coffee-steams-wooden-table-close-up-generative-ai_188544-8923.jpg?ga=GA1.1.87339076.1699689801&semt=ais_hybrid-rr-similar"
-        className=" w-full h-full object-cover"
+        src={data?.image}
+        className=" w-full h-44 object-cover"
       />
+      <Text
+        className="font-Sora-Regular text-sm capitalize mb-px p-2.5"
+        numberOfLines={1}
+      >
+        {data?.title}
+      </Text>
+      {/* <Text>{data?.display?.displayName}</Text> */}
     </Pressable>
   );
 };
-const SmallCardRelated = () => {
+const SmallCardRelated = ({ data }) => {
   return (
     <Pressable
-      className="w-36 h-44 bg-neutral-200 "
+      className=" bg-white"
       onPress={() => searchDetailScreen("related product")}
     >
-      <Image
-        src="https://images.unsplash.com/photo-1720294211016-aaf67dddd5dc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3RhcmJ1Y2tzfGVufDB8fDB8fHww"
-        className=" w-full h-full object-cover"
-      />
+      <View className="w-36">
+        <Image src={data?.image} className=" w-full h-44 object-cover" />
+        <Text
+          className="font-Sora-Regular text-sm capitalize mb-px p-2.5"
+          numberOfLines={1}
+        >
+          {data?.name}
+        </Text>
+      </View>
     </Pressable>
   );
 };

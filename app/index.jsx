@@ -7,15 +7,15 @@ import Button from "../components/Button";
 
 export default function SplashScreen() {
   const [loader, setLoader] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      // router.replace("/homestack/home");
-      // router.replace("/homestack/searchProduct");
-      // router.replace("/notification");
-      // router.replace("/cart");
-      // router.replace("/test");
-    }, 100);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     // router.replace("/homestack/home");
+  //     // router.replace("/homestack/searchProduct");
+  //     // router.replace("/notification");
+  //     router.replace("/cart");
+  //     // router.replace("/test");
+  //   }, 100);
+  // }, []);
   const handleOnClick = () => {
     setLoader(true);
     setTimeout(() => {

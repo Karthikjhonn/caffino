@@ -1,7 +1,8 @@
-import { View, Text, Pressable, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import React from "react";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Button from "../Button";
+import { FadeIn, FadeInDown } from "react-native-reanimated";
+import Animated from "react-native-reanimated";
 const MyNotification = () => {
   const data = [
     {
@@ -35,12 +36,16 @@ const MyNotification = () => {
   ];
   return (
     <ScrollView className="py-6 pt-0">
-      <View className="items-center my-3">
+      <Animated.View
+        entering={FadeIn.delay(300).duration(300)}
+        className="items-center my-3"
+      >
         <Text className="text-[10px] font-Sora-Regular text-gray-400 capitalize bg-offgray p-1 py-0.5 rounded text-center">
           Today
         </Text>
-      </View>
-      <View className="bg-emerald-50 p-4">
+      </Animated.View>
+      <Animated.View
+      entering={FadeInDown.delay(300).duration(300)} className="bg-emerald-50 p-4">
         <View className="w-32 h-32 ">
           <Image
             src={data[0]?.image_url}
@@ -64,7 +69,7 @@ const MyNotification = () => {
           <View className="w-1.5 h-1.5 rounded-full bg-gray-300/50 "></View>{" "}
           05.23 AM
         </Text>
-      </View>
+      </Animated.View>
     </ScrollView>
   );
 };
