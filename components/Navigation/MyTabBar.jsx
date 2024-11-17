@@ -7,11 +7,14 @@ import HomeOtSvg from "../../assets/svg/outline/HomeOtSvg";
 import HeartOtSvg from "../../assets/svg/outline/HeartOtSvg";
 import BagOtSvg from "../../assets/svg/outline/BagOtSvg";
 import BellOtSvg from "../../assets/svg/outline/BellOtSvg";
+import CategoriesSvg from "../../assets/svg/solid/categoriesSvg";
+import CategoriesOTSvg from "../../assets/svg/outline/categoriesOtSvg";
 
-const solidIcons = [<HomeSvg />, <HeartSvg />, <BagSvg />, <BellSvg />];
+const solidIcons = [<HomeSvg />,<CategoriesSvg/>, <HeartSvg />, <BagSvg />, <BellSvg />];
 
 const outlineIcons = [
   <HomeOtSvg />,
+  <CategoriesOTSvg />,
   <HeartOtSvg />,
   <BagOtSvg />,
   <BellOtSvg />,
