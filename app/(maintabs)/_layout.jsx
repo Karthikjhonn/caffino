@@ -17,6 +17,14 @@ export default function LayoutTabs() {
     >
       <Tabs.Screen name="homestack" options={{ headerShown: false }} />
       <Tabs.Screen
+        name="categories"
+        options={{
+          headerTitle: () => (
+            <Text className="font-Sora-Regular text-lg">categories</Text>
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="wishlist"
         options={{
           headerTitle: () => (

@@ -13,7 +13,7 @@ export default function SplashScreen() {
   //     // router.replace("/homestack/home");
   //     // router.replace("/homestack/searchProduct");
   //     // router.replace("/notification");
-  //     router.replace("/cart");
+  //     router.replace("/categories");
   //     // router.replace("/test");
   //   }, 100);
   // }, []);

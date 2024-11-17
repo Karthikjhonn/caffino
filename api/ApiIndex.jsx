@@ -11,3 +11,6 @@ export const getProducts = (id) => {
 export const sampleApis = () => {
   return GET("https://api.sampleapis.com/coffee/hot");
 };
+export const getMyProduct = () => {
+  return GET("https://backend-g7t0.onrender.com/api/k1/products");
+};
