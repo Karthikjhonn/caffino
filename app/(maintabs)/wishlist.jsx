@@ -4,7 +4,8 @@ import FavoritesCard from "../../components/Favorites/FavoritesCard";
 import { StatusBar } from "expo-status-bar";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import data from "../../data.json";
-import { useFocusEffect } from "@react-navigation/native";
+// import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect } from "expo-router";
 import { FadeIn, FadeInDown } from "react-native-reanimated";
 import Animated from "react-native-reanimated";
 const getProductDetails = async () => {
