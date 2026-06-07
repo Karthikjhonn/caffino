@@ -160,83 +160,91 @@ const headerContent = () => {
   const flatListRef = useRef(null);
   return (
     <>
-      <LinearGradient
-        colors={["#111111", "#313131"]}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        className="max-h-[280px]  pt-14 px-6"
-      >
-        <Skeleton
-          height={16}
-          width={70}
-          radius={30}
-          colorMode="dark"
-          backgroundColor="#313131"
-          show={!city}
+     <View className="relative">
+        <LinearGradient
+          colors={["#111111", "#313131"]}
+          start={{ x: 1, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          className="max-h-[280px]  pt-14 pb-24 px-6"
         >
-          <Text className="text-offgray text-xs font-Sora-Regular mb-1">
-            Location
-          </Text>
-        </Skeleton>
-        <View className="flex-row space-x-1">
-          <Text className="text-offgray text-sm font-Sora-SemiBold capitalize">
-            {city ? (
-              <Text>{city}</Text>
-            ) : (
-              <Skeleton
-                height={18}
-                width={100}
-                radius={30}
-                colorMode="dark"
-                backgroundColor="#313131"
-                show={!errorMsg}
-              >
-                {errorMsg && (
-                  <Text className="text-white">{errorMsg || "Loading..."}</Text>
-                )}
-              </Skeleton>
-            )}
-          </Text>
-          <Pressable>
-            <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
-          </Pressable>
-        </View>
-        {/* search section  */}
-        <View className="flex-row items-center mt-6 space-x-3">
-          <Pressable
-            onPress={() => router.push("/homestack/searchProduct")}
-            className="px-3 bg-black rounded-xl min-h-[52px] justify-center flex-1"
+          <Skeleton
+            height={16}
+            width={70}
+            radius={30}
+            colorMode="dark"
+            backgroundColor="#313131"
+            show={!city}
           >
-            <Text className="font-Sora-Regular text-sm text-offgray placeholder:text-offgray">
-              Search coffee..
+            <Text className="text-offgray text-xs font-Sora-Regular mb-1">
+              Location
             </Text>
-          </Pressable>
-          <TouchableOpacity
-            className="bg-accent justify-center items-center h-[52px] w-12 rounded-xl"
-            activeOpacity={0.7}
-          >
-            <Ionicons name="filter" size={20} color="white" />
-          </TouchableOpacity>
-        </View>
-        {/* banner  */}
-        <View className="mt-6 relative">
-          <Image
-            source={require("../../../assets/images/Banner 1.png")}
-            className="object-contain w-full h-36  rounded-2xl"
-          />
-          <View className="absolute top-10 left-5 z-10">
-            <Text className="font-Sora-SemiBold text-3xl inline-block text-white w-fit">
-              Buy one get {"\n"} one FREE
+          </Skeleton>
+          <View className="flex-row space-x-1">
+            <Text className="text-offgray text-sm font-Sora-SemiBold capitalize">
+              {city ? (
+                <Text>{city}</Text>
+              ) : (
+                <Skeleton
+                  height={18}
+                  width={100}
+                  radius={30}
+                  colorMode="dark"
+                  backgroundColor="#313131"
+                  show={!errorMsg}
+                >
+                  {errorMsg && (
+                    <Text className="text-white">
+                      {errorMsg || "Loading..."}
+                    </Text>
+                  )}
+                </Skeleton>
+              )}
             </Text>
-            <View className="bg-black w-full h-6 absolute top-3 -z-10"></View>
-            <View className="bg-black w-36 h-6 absolute top-12 -z-10"></View>
+            <Pressable>
+              <Entypo name="chevron-small-down" size={24} color={"#e3e3e3"} />
+            </Pressable>
           </View>
-          <Text className="bg-errorColor px-2 py-1 rounded-md text-white font-Sora-SemiBold text-sm absolute top-2 left-5">
-            {" "}
-            Promo
-          </Text>
+          {/* search section  */}
+          <View className="flex-row items-center mt-6 space-x-3">
+            <Pressable
+              onPress={() => router.push("/homestack/searchProduct")}
+              className="px-3 bg-black rounded-xl min-h-[52px] justify-center flex-1"
+            >
+              <Text className="font-Sora-Regular text-sm text-offgray placeholder:text-offgray">
+                Search coffee..
+              </Text>
+            </Pressable>
+            <TouchableOpacity
+              className="bg-accent justify-center items-center h-[52px] w-12 rounded-xl"
+              activeOpacity={0.7}
+            >
+              <Ionicons name="filter" size={20} color="white" />
+            </TouchableOpacity>
+          </View>
+        </LinearGradient>
+        {/* Banner */}
+        <View className="absolute left-6 right-6 -bottom-20">
+          <View className="relative">
+            <Image
+              source={require("../../../assets/images/Banner 1.png")}
+              className="w-full h-36 rounded-2xl"
+            />
+
+            <View className="absolute top-10 left-5">
+              <Text className="font-Sora-SemiBold text-3xl text-white">
+                Buy one get {"\n"} one FREE
+              </Text>
+
+              <View className="bg-black w-full h-6 absolute top-3 -z-10" />
+              <View className="bg-black w-36 h-6 absolute top-12 -z-10" />
+            </View>
+
+            <Text className="bg-errorColor px-2 py-1 rounded-md text-white font-Sora-SemiBold text-sm absolute top-2 left-5">
+              Promo
+            </Text>
+          </View>
         </View>
-      </LinearGradient>
+      </View>
 
       <View className="mt-[84px] mb-4">
         <FlatList
